@@ -1,12 +1,12 @@
 %code top{
 #include <stdio.h>
-#include "scanner_flex.h""
+#include "scanner_flex.h"
 }
 %code provides{
 void yyerror(const char *);
 extern int yylexerrs;
 }
-%defines "scanner_bison.h"
+%defines "parser_bison.h"
 %output "parser.c"
 %token PROG FIN VAR COD DEF LEER ESC ASIG ID CTE
 %define api.value.type {char *}
@@ -14,19 +14,40 @@ extern int yylexerrs;
 
 %%
 todo	: mini { if (yynerrs || yylexerrs) YYABORT;}
-mini : PRPROG programa PRFIN
-	| listado lista
-	;
-lista	: palabras '!'
-	| numeros '!'
-	| error '!'
-	;
-palabras: PALABRA
-	| palabras ',' PALABRA
-	;
-numeros	: NRO
-	| numeros ',' NRO
-	;
+mini 	: PROG programa FIN
+		;
+programa: VAR definiciones COD sentencias
+		| VAR COD sentencias
+		;
+definiciones: DEF ID "." definiciones
+		| DEF ID "."
+		;
+sentencias: sentencia "." sentencias
+		| sentencia "."
+		;
+sentencia: LEER"(" identificadores ")"
+		| ESC "(" expresiones ")"
+		| ID "<-" expresion
+		;
+identificadores:| ID  "," identificadores
+		| ID
+		;
+expresiones: expresion "," expresiones
+		| expresion
+		;
+expresion: expresion "+" termino
+		| expresion "-" termino
+		| termino		
+		;
+termino	: termino "*" factor
+		| termino "/" factor
+		| factor
+		;
+factor:	CTE 
+		| "(" expresion ")"
+		| ID
+		| "-" factor
+		;
 %%
 
 int yylexerrs = 0;

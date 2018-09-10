@@ -1,7 +1,7 @@
 %top{
 #include <stdio.h>
 #include <strings.h>
-#include "tokens_bison.h"
+#include "parser_bison.h"
 }
 %option outfile="scanner.c"
 %option header-file="scanner_flex.h"
@@ -16,7 +16,7 @@ S  [[:space:]]
 O  [[:^alnum:]]{-}[[:space:]()+\-*/,.]
 %%
 programa 	{yylval = strdup(yytext);return PROG;}
-variables 	{yylval = strdup(yytext);return VAR;
+variables 	{yylval = strdup(yytext);return VAR;}
 codigo 		{yylval = strdup(yytext);return COD;}
 definir 	{yylval = strdup(yytext);return DEF;}
 leer 		{yylval = strdup(yytext);return LEER;}
@@ -25,7 +25,7 @@ fin 		{yylval = strdup(yytext);return FIN;}
 {L}{LD}* 	{yylval = strdup(yytext);return ID;}
 {D}+ 		{yylval = strdup(yytext);return CTE;}
 "<-" 		{yylval = strdup(yytext);return ASIG;}
-"+" 		{yylval = strdup(yytext);return '+';}}
+"+" 		{yylval = strdup(yytext);return '+';}
 "-" 		{yylval = strdup(yytext);return '-';}
 "*" 		{yylval = strdup(yytext);return '*';}
 "/" 		{yylval = strdup(yytext);return '/';}
