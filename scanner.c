@@ -1896,12 +1896,8 @@ char *token_names[] = {"Fin de Archivo", "Programa", "Fin", "Variable", "Codigo"
 int main() {
 	enum token t;
 	while ((t = yylex())){
-		if (t >= ID){
-			printf("Token: %s\t\t\tLexema: %s\n", token_names[t], yytext);
-		}
-		else{
-			printf("Token: %s\n", token_names[t]);
-		}
+		if (t >= ID) printf("Token: %s\t\t\tLexema: %s\n", token_names[t], yytext);
+		else printf("Token: %s\n", token_names[t]);
 	}
 	puts("-------totales-------");
 	printf("Identificadores: %d\nConstantes: %d\nPalabras Reservadas: %d\nOperadores: %d\nCaracteres de puntuacion: %d\nErrores: %d\n", identificadores, constantes, palabrasReservadas, operadores, caracteresPuntuacion,errores);
