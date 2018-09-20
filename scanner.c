@@ -868,7 +868,7 @@ caracteresPuntuacion++; return PUNTO;
 case 19:
 YY_RULE_SETUP
 #line 38 "scanner.l"
-errores++; printf("Error Léxico:\t\tValor: %s\n", yytext);
+errores++; printf("Error Léxico:\t\t\t\tValor: %s\n", yytext);
 	YY_BREAK
 case 20:
 /* rule 20 can match eol */
@@ -1894,11 +1894,17 @@ void yyfree (void * ptr )
 #line 41 "scanner.l"
 
 
-char *token_names[] = {"", "Identificador", "Constante Entera", "Programa", "Fin", "Variable", "Codigo","Definir", "Leer", "Escribir", "Mas", "Menos", "Por", "Dividir", "Asignacion", "Parentesis que abre", "Parentecis que cierra", "Coma", "Punto"};
+char *token_names[] = {"Fin de Archivo", "Programa", "Fin", "Variable", "Codigo","Definir", "Leer", "Escribir", "Mas", "Menos", "Por", "Dividir", "Asignacion", "Parentesis que abre", "Parentecis que cierra", "Coma", "Punto", "Identific", "Constante"};
 int main() {
 	enum token t;
-	while ((t = yylex()))
-		printf("Token: %s\t\t\tLexema: %s\n", token_names[t], yytext);
+	while ((t = yylex())){
+		if (t >= ID){
+			printf("Token: %s\t\t\tLexema: %s\n", token_names[t], yytext);
+		}
+		else{
+			printf("Token: %s\n", token_names[t]);
+		}
+	}
 	puts("-------totales-------");
 	printf("Identificadores: %d\nConstantes: %d\nPalabras Reservadas: %d\nOperadores: %d\nCaracteres de puntuacion: %d\nErrores: %d\n", identificadores, constantes, palabrasReservadas, operadores, caracteresPuntuacion,errores);
 	return 0;
