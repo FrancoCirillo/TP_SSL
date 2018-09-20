@@ -16,7 +16,9 @@ Token: Parentesis que abre
 Token: Identific			Lexema: var1
 Token: Coma
 Token: Identific			Lexema: var2
-Error Léxico:				Valor: ).##
+Token: Parentecis que cierra
+Token: Punto
+Error Léxico:				Valor: ##
 Token: Identific			Lexema: total
 Token: Asignacion
 Token: Identific			Lexema: var1
@@ -43,15 +45,17 @@ Token: Identific			Lexema: total
 Error Léxico:				Valor: #
 Token: Constante			Lexema: 3
 Token: Identific			Lexema: a
-Error Léxico:				Valor: @/
+Error Léxico:				Valor: @
+Token: Dividir
 Token: Constante			Lexema: 2
-Error Léxico:				Valor: ).
+Token: Parentecis que cierra
+Token: Punto
 Error Léxico:				Valor: <
 Token: Fin
 -------totales-------
 Identificadores: 12
 Constantes: 6
 Palabras Reservadas: 9
-Operadores: 7
-Caracteres de puntuacion: 10
-Errores: 5
+Operadores: 8
+Caracteres de puntuacion: 14
+Errores: 4

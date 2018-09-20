@@ -15,7 +15,7 @@ L  [[:alpha:]]
 D  [0-9]
 LD [[:alnum:]]
 S  [[:space:]]
-O  [[:^alnum:]]{-}[[:space:]]
+O  [[:^alnum:]]{-}[[:space:]()+\-*/,.]|<-
 %%
 programa palabrasReservadas++; return PRPROG;
 variables palabrasReservadas++; return PRVAR;
