@@ -15,7 +15,7 @@ L  [[:alpha:]]
 D  [0-9]
 LD [[:alnum:]]
 S  [[:space:]]
-O  [[:^alnum:]]{-}[[:space:]()+\-*/,.]|<-
+O  [[:^alnum:]]{-}[[:space:]()+\-*/,.]
 %%
 programa palabrasReservadas++; return PRPROG;
 variables palabrasReservadas++; return PRVAR;
@@ -24,19 +24,19 @@ definir palabrasReservadas++; return PRDEF;
 leer palabrasReservadas++; return PRLEER;
 escribir palabrasReservadas++; return PRESC;
 fin palabrasReservadas++; return PRFIN;
+"<-" operadores++; return ASIG;
 {L}{LD}* identificadores++; return ID;
 {D}+ constantes++; return CTE;
 "+" operadores++; return '+';
 "-" operadores++; return '-';
 "*" operadores++; return '*';
 "/" operadores++; return '/';
-"<-" operadores++; return ASIG;
 "(" caracteresPuntuacion++; return '(';
 ")" caracteresPuntuacion++; return ')';
 "," caracteresPuntuacion++; return ',';
 "." caracteresPuntuacion++; return '.';
-{O}+ errores++; printf("Error Léxico:\t\t\t\tValor: %s\n", yytext);
 {S}+    	/*ignorar*/
+{LD}*{O}+{LD}* errores++; printf("Error Léxico:\t\t\t\tValor: %s\n", yytext);
 "//".* /*ignorar*/
 %%
 
