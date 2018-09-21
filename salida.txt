@@ -1,5 +1,5 @@
 Token: Programa
-Token: Variable
+Token: Variables
 Token: Definir
 Token: Identific			Lexema: total
 Token: .
@@ -17,7 +17,7 @@ Token: ,
 Token: Identific			Lexema: var2
 Token: )
 Token: .
-Error Léxico:				Valor: ##
+Error Léxico:				 Cadena invalida: #<#
 Token: Identific			Lexema: total
 Token: Asignacion
 Token: Identific			Lexema: var1
@@ -40,11 +40,9 @@ Token: )
 Token: .
 Token: Escribir
 Token: (
-Error Léxico:				Valor: total#3a
-Error Léxico:				Valor: @
+Error Léxico:			 Identificador invalido: total#3a@
 Token: /
 Token: Constante			Lexema: 2
 Token: )
 Token: .
-Error Léxico:				Valor: <
-Token: Fin
+<Token: Fin

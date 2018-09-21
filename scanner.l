@@ -2,45 +2,39 @@
 #include <stdio.h>
 #include "tokens.h"
 }
-%{
-int identificadores = 0;
-int constantes = 0;
-int palabrasReservadas = 0;
-int operadores = 0;
-int caracteresPuntuacion = 0;
-int errores =0;
-%}
 %option outfile="scanner.c"
 L  [[:alpha:]]
 D  [0-9]
 LD [[:alnum:]]
 S  [[:space:]]
-O  [[:^alnum:]]{-}[[:space:]()+\-*/,.]
+O  [[:^alnum:]]{-}[[:space:]()+\-*/,.<]
 %%
-programa palabrasReservadas++; return PRPROG;
-variables palabrasReservadas++; return PRVAR;
-codigo palabrasReservadas++; return PRCOD;
-definir palabrasReservadas++; return PRDEF; 
-leer palabrasReservadas++; return PRLEER;
-escribir palabrasReservadas++; return PRESC;
-fin palabrasReservadas++; return PRFIN;
-"<-" operadores++; return ASIG;
-{L}{LD}* identificadores++; return ID;
-{D}+ constantes++; return CTE;
-"+" operadores++; return '+';
-"-" operadores++; return '-';
-"*" operadores++; return '*';
-"/" operadores++; return '/';
-"(" caracteresPuntuacion++; return '(';
-")" caracteresPuntuacion++; return ')';
-"," caracteresPuntuacion++; return ',';
-"." caracteresPuntuacion++; return '.';
+programa 	return PRPROG;
+variables 	return PRVAR;
+codigo 		return PRCOD;
+definir 	return PRDEF; 
+leer 		return PRLEER;
+escribir 	return PRESC;
+fin 		return PRFIN;
+{L}{LD}* 	return ID;
+{D}+ 		return CTE;
+"<-" 		return ASIG;
+"+" 		return '+';
+"-" 		return '-';
+"*" 		return '*';
+"/" 		return '/';
+"(" 		return '(';
+")" 		return ')';
+"," 		return ',';
+"." 		return '.';
 {S}+    	/*ignorar*/
-{LD}*{O}+{LD}* errores++; printf("Error Léxico:\t\t\t\tValor: %s\n", yytext);
-"//".* /*ignorar*/
+"//".* 		/*ignorar*/
+{O}+[^[:space:]()+\-*/,.]*	printf("Error Léxico:\t\t\t\t Cadena invalida: %s\n", yytext);
+{D}+{LD}*{O}+([^[:space:]()+\-*/,.])*	printf("Error Léxico:\t\t\t Constante invalida: %s\n", yytext);
+{L}{LD}*+{O}+([^[:space:]()+\-*/,.])* printf("Error Léxico:\t\t\t Identificador invalido: %s\n", yytext);
 %%
 
-char *token_names[] = {"Fin de archivo", "Programa", "Fin", "Variable", "Codigo","Definir", "Leer", "Escribir","Asignacion", "Identific", "Constante"};
+char *token_names[] = {"Fin de archivo", "Programa", "Fin", "Variables", "Codigo", "Definir", "Leer", "Escribir", "Asignacion", "Identific", "Constante"};
 int main() {
 	enum token t;
 	while ((t = yylex())){
