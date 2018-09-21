@@ -26,28 +26,29 @@ escribir palabrasReservadas++; return PRESC;
 fin palabrasReservadas++; return PRFIN;
 {L}{LD}* identificadores++; return ID;
 {D}+ constantes++; return CTE;
-"+" operadores++; return OPMAS;
-"-" operadores++; return OPMEN;
-"*" operadores++; return OPPOR;
-"/" operadores++; return OPDIV;
-"<-" operadores++; return OPASIG;
-"(" caracteresPuntuacion++; return PARABRE;
-")" caracteresPuntuacion++; return PARCIERRA;
-"," caracteresPuntuacion++; return COMA;
-"." caracteresPuntuacion++; return PUNTO;
+"+" operadores++; return '+';
+"-" operadores++; return '-';
+"*" operadores++; return '*';
+"/" operadores++; return '/';
+"<-" operadores++; return ASIG;
+"(" caracteresPuntuacion++; return '(';
+")" caracteresPuntuacion++; return ')';
+"," caracteresPuntuacion++; return ',';
+"." caracteresPuntuacion++; return '.';
 {O}+ errores++; printf("Error Léxico:\t\t\t\tValor: %s\n", yytext);
 {S}+    	/*ignorar*/
-"//".* printf("Encontro un comentario\n", yytext);
+"//".* /*ignorar*/
 %%
 
-char *token_names[] = {"Fin de Archivo", "Programa", "Fin", "Variable", "Codigo","Definir", "Leer", "Escribir", "Mas", "Menos", "Por", "Dividir", "Asignacion", "Parentesis que abre", "Parentecis que cierra", "Coma", "Punto", "Identific", "Constante"};
+char *token_names[] = {"Fin de archivo", "Programa", "Fin", "Variable", "Codigo","Definir", "Leer", "Escribir","Asignacion", "Identific", "Constante"};
 int main() {
 	enum token t;
 	while ((t = yylex())){
-		if (t >= ID) printf("Token: %s\t\t\tLexema: %s\n", token_names[t], yytext);
-		else printf("Token: %s\n", token_names[t]);
+		if (t<=CTE){
+			if (t >= ID) printf("Token: %s\t\t\tLexema: %s\n", token_names[t], yytext);
+			else printf("Token: %s\n", token_names[t]);
+		}
+		else printf("Token: %c\n", t);
 	}
-	puts("-------totales-------");
-	printf("Identificadores: %d\nConstantes: %d\nPalabras Reservadas: %d\nOperadores: %d\nCaracteres de puntuacion: %d\nErrores: %d\n", identificadores, constantes, palabrasReservadas, operadores, caracteresPuntuacion,errores);
-	return 0;
+return 0;
 }

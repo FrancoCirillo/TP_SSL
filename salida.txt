@@ -2,60 +2,52 @@ Token: Programa
 Token: Variable
 Token: Definir
 Token: Identific			Lexema: total
-Token: Punto
-Encontro un comentario
+Token: .
 Token: Definir
 Token: Identific			Lexema: var1
-Token: Punto
+Token: .
 Token: Definir
 Token: Identific			Lexema: var2
-Token: Punto
+Token: .
 Token: Codigo
 Token: Leer
-Token: Parentesis que abre
+Token: (
 Token: Identific			Lexema: var1
-Token: Coma
+Token: ,
 Token: Identific			Lexema: var2
-Token: Parentecis que cierra
-Token: Punto
+Token: )
+Token: .
 Error Léxico:				Valor: ##
 Token: Identific			Lexema: total
 Token: Asignacion
 Token: Identific			Lexema: var1
-Token: Mas
+Token: +
 Token: Constante			Lexema: 3
-Token: Por
-Token: Menos
+Token: *
+Token: -
 Token: Identific			Lexema: var2
-Token: Punto
+Token: .
 Token: Identific			Lexema: var2
 Token: Asignacion
 Token: Constante			Lexema: 2
-Token: Por
-Token: Parentesis que abre
+Token: *
+Token: (
 Token: Constante			Lexema: 514
-Token: Mas
+Token: +
 Token: Constante			Lexema: 4
 Token: Identific			Lexema: z2m
-Token: Parentecis que cierra
-Token: Punto
+Token: )
+Token: .
 Token: Escribir
-Token: Parentesis que abre
+Token: (
 Token: Identific			Lexema: total
 Error Léxico:				Valor: #
 Token: Constante			Lexema: 3
 Token: Identific			Lexema: a
 Error Léxico:				Valor: @
-Token: Dividir
+Token: /
 Token: Constante			Lexema: 2
-Token: Parentecis que cierra
-Token: Punto
+Token: )
+Token: .
 Error Léxico:				Valor: <
 Token: Fin
--------totales-------
-Identificadores: 12
-Constantes: 6
-Palabras Reservadas: 9
-Operadores: 8
-Caracteres de puntuacion: 14
-Errores: 4

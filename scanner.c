@@ -821,47 +821,47 @@ constantes++; return CTE;
 case 10:
 YY_RULE_SETUP
 #line 29 "scanner.l"
-operadores++; return OPMAS;
+operadores++; return '+';
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
 #line 30 "scanner.l"
-operadores++; return OPMEN;
+operadores++; return '-';
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
 #line 31 "scanner.l"
-operadores++; return OPPOR;
+operadores++; return '*';
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
 #line 32 "scanner.l"
-operadores++; return OPDIV;
+operadores++; return '/';
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
 #line 33 "scanner.l"
-operadores++; return OPASIG;
+operadores++; return ASIG;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
 #line 34 "scanner.l"
-caracteresPuntuacion++; return PARABRE;
+caracteresPuntuacion++; return '(';
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 35 "scanner.l"
-caracteresPuntuacion++; return PARCIERRA;
+caracteresPuntuacion++; return ')';
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
 #line 36 "scanner.l"
-caracteresPuntuacion++; return COMA;
+caracteresPuntuacion++; return ',';
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
 #line 37 "scanner.l"
-caracteresPuntuacion++; return PUNTO;
+caracteresPuntuacion++; return '.';
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
@@ -877,7 +877,7 @@ YY_RULE_SETUP
 case 21:
 YY_RULE_SETUP
 #line 40 "scanner.l"
-printf("Encontro un comentario\n", yytext);
+/*ignorar*/
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
@@ -1892,15 +1892,16 @@ void yyfree (void * ptr )
 #line 41 "scanner.l"
 
 
-char *token_names[] = {"Fin de Archivo", "Programa", "Fin", "Variable", "Codigo","Definir", "Leer", "Escribir", "Mas", "Menos", "Por", "Dividir", "Asignacion", "Parentesis que abre", "Parentecis que cierra", "Coma", "Punto", "Identific", "Constante"};
+char *token_names[] = {"Fin de archivo", "Programa", "Fin", "Variable", "Codigo","Definir", "Leer", "Escribir","Asignacion", "Identific", "Constante"};
 int main() {
 	enum token t;
 	while ((t = yylex())){
-		if (t >= ID) printf("Token: %s\t\t\tLexema: %s\n", token_names[t], yytext);
-		else printf("Token: %s\n", token_names[t]);
+		if (t<=CTE){
+			if (t >= ID) printf("Token: %s\t\t\tLexema: %s\n", token_names[t], yytext);
+			else printf("Token: %s\n", token_names[t]);
+		}
+		else printf("Token: %c\n", t);
 	}
-	puts("-------totales-------");
-	printf("Identificadores: %d\nConstantes: %d\nPalabras Reservadas: %d\nOperadores: %d\nCaracteres de puntuacion: %d\nErrores: %d\n", identificadores, constantes, palabrasReservadas, operadores, caracteresPuntuacion,errores);
-	return 0;
+return 0;
 }
 
