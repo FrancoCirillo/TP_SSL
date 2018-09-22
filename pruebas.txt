@@ -1,3 +1,15 @@
+hola
+<-
+a;
+.s
+-<-
+<<-
+-<.
+.<-chau
+<3<-3
+.
+7+4.
+.
 programa
 	variables
 		definir total. //comentario

@@ -7,7 +7,7 @@ L  [[:alpha:]]
 D  [0-9]
 LD [[:alnum:]]
 S  [[:space:]]
-O  [[:^alnum:]]{-}[[:space:]()+\-*/,.<]
+O  [[:^alnum:]]{-}[[:space:]()+\-*/,.]
 %%
 programa 	return PRPROG;
 variables 	return PRVAR;
@@ -28,21 +28,22 @@ fin 		return PRFIN;
 "," 		return ',';
 "." 		return '.';
 {S}+    	/*ignorar*/
-"//".* 		/*ignorar*/
-{O}+[^[:space:]()+\-*/,.]*	printf("Error Léxico:\t\t\t\t Cadena invalida: %s\n", yytext);
-{D}+{LD}*{O}+([^[:space:]()+\-*/,.])*	printf("Error Léxico:\t\t\t Constante invalida: %s\n", yytext);
-{L}{LD}*+{O}+([^[:space:]()+\-*/,.])* printf("Error Léxico:\t\t\t Identificador invalido: %s\n", yytext);
+"//".* 		/*  ignorar*/
+{O}+[^[:space:]()+\-*/,.<]*|<	printf("Error Léxico: Cadena desconocida: %s\n", yytext);
+{D}+{L}+{LD}*	printf("Error Léxico:\t\t\tConstante invalida: %s\n", yytext);
+{L}{LD}*{O}+([^[:space:]()+\-*/,.])* printf("Error Léxico:\t\t\tIdentificador invalido: %s\n", yytext);
 %%
 
-char *token_names[] = {"Fin de archivo", "Programa", "Fin", "Variables", "Codigo", "Definir", "Leer", "Escribir", "Asignacion", "Identific", "Constante"};
+char *token_names[] = {"Fin de archivo", "Programa", "Fin", "Variables", "Codigo", "Definir", "Leer", "Escribir", "Asignacion", "Identificador", "Constante"};
 int main() {
 	enum token t;
 	while ((t = yylex())){
 		if (t<=CTE){
-			if (t >= ID) printf("Token: %s\t\t\tLexema: %s\n", token_names[t], yytext);
+			if (t >= ID) printf("Token: %s\t\tLexema: %s\n", token_names[t], yytext);
 			else printf("Token: %s\n", token_names[t]);
 		}
 		else printf("Token: %c\n", t);
 	}
+    printf("Token: %s\n", token_names[t]);
 return 0;
 }
