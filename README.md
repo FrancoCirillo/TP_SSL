@@ -1,4 +1,4 @@
 # SSLTP03
 flex scanner.l
-gcc -o scanner scanner.c -lfl
+gcc -g -Wall scanner.c main.c -o scanner -lfl
 ./scanner <entrada.txt >salida.txt

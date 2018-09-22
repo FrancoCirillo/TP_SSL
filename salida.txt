@@ -1,48 +1,49 @@
 Token: Programa
 Token: Variables
 Token: Definir
-Token: Identific			Lexema: total
+Token: Identificador		Lexema: total
 Token: .
 Token: Definir
-Token: Identific			Lexema: var1
+Token: Identificador		Lexema: var1
 Token: .
 Token: Definir
-Token: Identific			Lexema: var2
+Token: Identificador		Lexema: var2
 Token: .
 Token: Codigo
 Token: Leer
 Token: (
-Token: Identific			Lexema: var1
+Token: Identificador		Lexema: var1
 Token: ,
-Token: Identific			Lexema: var2
+Token: Identificador		Lexema: var2
 Token: )
 Token: .
-Error Léxico:				 Cadena invalida: #<#
-Token: Identific			Lexema: total
+Error Léxico: Cadena desconocida: ##
+Token: Identificador		Lexema: total
 Token: Asignacion
-Token: Identific			Lexema: var1
+Token: Identificador		Lexema: var1
 Token: +
-Token: Constante			Lexema: 3
+Token: Constante		Lexema: 3
 Token: *
 Token: -
-Token: Identific			Lexema: var2
+Token: Identificador		Lexema: var2
 Token: .
-Token: Identific			Lexema: var2
+Token: Identificador		Lexema: var2
 Token: Asignacion
-Token: Constante			Lexema: 2
+Token: Constante		Lexema: 2
 Token: *
 Token: (
-Token: Constante			Lexema: 514
+Token: Constante		Lexema: 514
 Token: +
-Token: Constante			Lexema: 4
-Token: Identific			Lexema: z2m
+Error Léxico:			Constante invalida: 4z2m
 Token: )
 Token: .
 Token: Escribir
 Token: (
-Error Léxico:			 Identificador invalido: total#3a@
+Error Léxico:			Identificador invalido: total#3a@
 Token: /
-Token: Constante			Lexema: 2
+Token: Constante		Lexema: 2
 Token: )
 Token: .
-<Token: Fin
+Error Léxico: Cadena desconocida: <
+Token: Fin
+Token: Fin de archivo

@@ -3,6 +3,9 @@
 #include "tokens.h"
 }
 %option outfile="scanner.c"
+%option header-file="scanner_flex.h"
+%option noinput
+%option nounput
 L  [[:alpha:]]
 D  [0-9]
 LD [[:alnum:]]
@@ -29,21 +32,6 @@ fin 		return PRFIN;
 "." 		return '.';
 {S}+    	/*ignorar*/
 "//".* 		/*  ignorar*/
-{O}+[^[:space:]()+\-*/,.<]*|<	printf("Error Léxico: Cadena desconocida: %s\n", yytext);
+{O}+[^[:space:]()+\-*/,.<]*	printf("Error Léxico: Cadena desconocida: %s\n", yytext);
 {D}+{L}+{LD}*	printf("Error Léxico:\t\t\tConstante invalida: %s\n", yytext);
 {L}{LD}*{O}+([^[:space:]()+\-*/,.])* printf("Error Léxico:\t\t\tIdentificador invalido: %s\n", yytext);
-%%
-
-char *token_names[] = {"Fin de archivo", "Programa", "Fin", "Variables", "Codigo", "Definir", "Leer", "Escribir", "Asignacion", "Identificador", "Constante"};
-int main() {
-	enum token t;
-	while ((t = yylex())){
-		if (t<=CTE){
-			if (t >= ID) printf("Token: %s\t\tLexema: %s\n", token_names[t], yytext);
-			else printf("Token: %s\n", token_names[t]);
-		}
-		else printf("Token: %c\n", t);
-	}
-    printf("Token: %s\n", token_names[t]);
-return 0;
-}

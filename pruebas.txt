@@ -1,6 +1,7 @@
 hola
 <-
 a;
+##<<<
 .s
 -<-
 <<-
@@ -10,6 +11,9 @@ a;
 .
 7+4.
 .
+c$<-
+c$<-4
+c$<4
 programa
 	variables
 		definir total. //comentario
