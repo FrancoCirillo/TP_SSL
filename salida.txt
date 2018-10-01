@@ -1,3 +1,32 @@
+Token: Identificador		Lexema: hola
+Token: Asignacion
+Error Léxico:			Identificador invalido: a;
+Token: .
+Token: Identificador		Lexema: s
+Token: -
+Token: Asignacion
+Error Léxico: Cadena desconocida: <<
+Token: -
+Token: -
+Error Léxico: Cadena desconocida: <
+Token: .
+Token: .
+Token: Asignacion
+Token: Identificador		Lexema: chau
+Error Léxico: Cadena desconocida: <
+Token: Constante		Lexema: 3
+Token: Asignacion
+Token: Constante		Lexema: 3
+Token: .
+Token: Constante		Lexema: 7
+Token: +
+Token: Constante		Lexema: 4
+Token: .
+Token: .
+Error Léxico: Cadena desconocida: ##
+Token: Identificador		Lexema: aa
+Error Léxico:			Identificador invalido: a#a
+Error Léxico:			Identificador invalido: aa##
 Token: Programa
 Token: Variables
 Token: Definir

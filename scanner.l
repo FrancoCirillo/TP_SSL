@@ -32,6 +32,6 @@ fin 		return PRFIN;
 "." 		return '.';
 {S}+    	/*ignorar*/
 "//".* 		/*  ignorar*/
-{O}+[^[:space:]()+\-*/,.<]*	printf("Error Léxico: Cadena desconocida: %s\n", yytext);
+{O}+ printf("Error Léxico: Cadena desconocida: %s\n", yytext);
 {D}+{L}+{LD}*	printf("Error Léxico:\t\t\tConstante invalida: %s\n", yytext);
 {L}{LD}*{O}+([^[:space:]()+\-*/,.])* printf("Error Léxico:\t\t\tIdentificador invalido: %s\n", yytext);
