@@ -842,37 +842,37 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 25 "scanner.l"
-{yylval = strdup(yytext);return PROG;}
+{return PROG;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
 #line 26 "scanner.l"
-{yylval = strdup(yytext);return VAR;}
+{return VAR;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 27 "scanner.l"
-{yylval = strdup(yytext);return COD;}
+{return COD;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 28 "scanner.l"
-{yylval = strdup(yytext);return DEF;}
+{return DEF;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 29 "scanner.l"
-{yylval = strdup(yytext);return LEER;}
+{return LEER;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 30 "scanner.l"
-{yylval = strdup(yytext);return ESC;}
+{return ESC;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 31 "scanner.l"
-{yylval = strdup(yytext);return FIN;}
+{return FIN;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
@@ -887,42 +887,42 @@ YY_RULE_SETUP
 case 10:
 YY_RULE_SETUP
 #line 34 "scanner.l"
-{yylval = strdup(yytext);return ASIG;}
+{return ASIG;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
 #line 35 "scanner.l"
-{yylval = strdup(yytext);return '+';}
+{return '+';}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
 #line 36 "scanner.l"
-{yylval = strdup(yytext);return '-';}
+{return '-';}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
 #line 37 "scanner.l"
-{yylval = strdup(yytext);return '*';}
+{return '*';}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
 #line 38 "scanner.l"
-{yylval = strdup(yytext);return '/';}
+{return '/';}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
 #line 39 "scanner.l"
-{yylval = strdup(yytext);return '(';}
+{return '(';}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 40 "scanner.l"
-{yylval = strdup(yytext);return ')';}
+{return ')';}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
 #line 41 "scanner.l"
-{yylval = strdup(yytext);return ',';}
+{return ',';}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP

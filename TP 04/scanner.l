@@ -22,23 +22,23 @@ LD [[:alnum:]]
 S  [[:space:]]
 O  [[:^alnum:]]{-}[[:space:]()+\-*/,.]
 %%
-programa 	{yylval = strdup(yytext);return PROG;}
-variables 	{yylval = strdup(yytext);return VAR;}
-codigo 		{yylval = strdup(yytext);return COD;}
-definir 	{yylval = strdup(yytext);return DEF;}
-leer 		{yylval = strdup(yytext);return LEER;}
-escribir 	{yylval = strdup(yytext);return ESC;}
-fin 		{yylval = strdup(yytext);return FIN;}
+programa 	{return PROG;}
+variables 	{return VAR;}
+codigo 		{return COD;}
+definir 	{return DEF;}
+leer 		{return LEER;}
+escribir 	{return ESC;}
+fin 		{return FIN;}
 {L}{LD}* 	{yylval = strdup(yytext);return ID;}
 {D}+ 		{yylval = strdup(yytext);return CTE;}
-"<-" 		{yylval = strdup(yytext);return ASIG;}
-"+" 		{yylval = strdup(yytext);return '+';}
-"-" 		{yylval = strdup(yytext);return '-';}
-"*" 		{yylval = strdup(yytext);return '*';}
-"/" 		{yylval = strdup(yytext);return '/';}
-"(" 		{yylval = strdup(yytext);return '(';}
-")" 		{yylval = strdup(yytext);return ')';}
-"," 		{yylval = strdup(yytext);return ',';}
+"<-" 		{return ASIG;}
+"+" 		{return '+';}
+"-" 		{return '-';}
+"*" 		{return '*';}
+"/" 		{return '/';}
+"(" 		{return '(';}
+")" 		{return ')';}
+"," 		{return ',';}
 "." 		{return '.';}
 {S}+    	;/*ignorar*/
 "//".* 		;/*  ignorar*/
