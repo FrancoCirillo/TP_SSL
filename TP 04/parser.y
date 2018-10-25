@@ -8,7 +8,12 @@ extern int yylexerrs;
 }
 %defines "parser_bison.h"
 %output "parser.c"
-%token PROG FIN VAR COD DEF LEER ESC ASIG ID CTE
+%token PROG FIN VAR COD DEF LEER ESC ID CTE
+%right ASIG
+%left '+' '-'
+%left '/' '*'
+%precedence NEG 
+%precedence '(' ')'
 %define api.value.type {char *}
 %define parse.error verbose
 
@@ -16,41 +21,41 @@ extern int yylexerrs;
 todo	: mini { if (yynerrs || yylexerrs) YYABORT;}
 mini 	: PROG programa FIN
 		;
-programa: VAR definiciones COD sentencias
+programa: VAR definiciones COD sentencias 
 		| VAR COD sentencias
 		;
-definiciones: DEF ID "." definiciones
-		| DEF ID "."
+definiciones: definiciones DEF ID '.' {printf("definir %s\n", $ID);}
+		| DEF ID '.' {printf("definir %s\n", $ID);}
+		| error '.'
 		;
-sentencias: sentencia "." sentencias
-		| sentencia "."
+sentencias: sentencia '.' sentencias
+		| sentencia '.'
 		;
-sentencia: LEER"(" identificadores ")"
-		| ESC "(" expresiones ")"
-		| ID "<-" expresion
-		;
-identificadores:| ID  "," identificadores
+sentencia: LEER'(' identificadores ')' {printf("leer\n");}
+		| ESC '(' expresiones ')' {printf("escribir\n");}
+		| ID ASIG expresion {printf("asignacion\n");}
+		| error
+		; 
+identificadores:| ID  ',' identificadores
 		| ID
 		;
-expresiones: expresion "," expresiones
+expresiones: expresion ',' expresiones 
 		| expresion
 		;
-expresion: expresion "+" termino
-		| expresion "-" termino
-		| termino		
-		;
-termino	: termino "*" factor
-		| termino "/" factor
-		| factor
-		;
-factor:	CTE 
-		| "(" expresion ")"
+expresion: expresion '+' expresion {printf("suma\n");}
+		| expresion '-' expresion {printf("resta\n");}
+		| expresion '*' expresion {printf("multiplicacion\n");}
+		| expresion '/' expresion {printf("division\n");}
+		| CTE 
+		| '(' expresion ')' {printf("parentesis\n");}
 		| ID
-		| "-" factor
+		| '-' expresion %prec NEG {printf("inversion\n");}		
 		;
+
 %%
 
 int yylexerrs = 0;
+int yynerrs = 0;
 int main() {
 	switch( yyparse() ){
 	case 0:
@@ -62,7 +67,7 @@ int main() {
 	}
 	return 0;
 }
-/* Informa la ocurrencia de un error. */
+
 void yyerror(const char *s){
 	printf("línea #%d: %s\n", yylineno, s);
 	return;

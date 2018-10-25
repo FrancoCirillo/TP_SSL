@@ -32,10 +32,10 @@ fin 		{yylval = strdup(yytext);return FIN;}
 "(" 		{yylval = strdup(yytext);return '(';}
 ")" 		{yylval = strdup(yytext);return ')';}
 "," 		{yylval = strdup(yytext);return ',';}
-"." 		{yylval = strdup(yytext);return '.';}
-{S}+    	/*ignorar*/
-"//".* 		/*  ignorar*/
-{O}+ 		{yylexerrs++;yyerror("Error Léxico: Cadena desconocida:\n");}
-{D}+{L}+{LD}*	{yylexerrs++;yyerror("Error Léxico:\t\t\tConstante invalida:\n");}
-{L}{LD}*{O}+([^[:space:]()+\-/*,.])* {yylexerrs++; yyerror("Error Léxico:\t\t\tIdentificador invalido: \n");}
+"." 		{return '.';}
+{S}+    	;/*ignorar*/
+"//".* 		;/*  ignorar*/
+{O}+ 		{yylexerrs++;yyerror("Error Léxico: Cadena desconocida: ");printf("%s\n",yytext);}
+{D}+{L}+{LD}*	{yylexerrs++;yyerror("Error Léxico: Constante invalida: ");printf("%s\n",yytext);}
+{L}{LD}*{O}+([^[:space:]()*+\-/,.])* {yylexerrs++; yyerror("Error Léxico: Identificador invalido: ");printf("%s\n",yytext);}
 %%

@@ -52,9 +52,10 @@ extern int yydebug;
     DEF = 262,
     LEER = 263,
     ESC = 264,
-    ASIG = 265,
-    ID = 266,
-    CTE = 267
+    ID = 265,
+    CTE = 266,
+    ASIG = 267,
+    NEG = 268
   };
 #endif
 
@@ -75,6 +76,6 @@ int yyparse (void);
 void yyerror(const char *);
 extern int yylexerrs;
 
-#line 79 "parser_bison.h" /* yacc.c:1909  */
+#line 80 "parser_bison.h" /* yacc.c:1909  */
 
 #endif /* !YY_YY_PARSER_BISON_H_INCLUDED  */

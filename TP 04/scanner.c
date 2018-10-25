@@ -919,33 +919,33 @@ YY_RULE_SETUP
 case 18:
 YY_RULE_SETUP
 #line 35 "scanner.l"
-{yylval = strdup(yytext);return '.';}
+{return '.';}
 	YY_BREAK
 case 19:
 /* rule 19 can match eol */
 YY_RULE_SETUP
 #line 36 "scanner.l"
-/*ignorar*/
+;/*ignorar*/
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
 #line 37 "scanner.l"
-/*  ignorar*/
+;/*  ignorar*/
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
 #line 38 "scanner.l"
-{yylexerrs++;yyerror("Error Léxico: Cadena desconocida:\n");}
+{yylexerrs++;yyerror("Error Léxico: Cadena desconocida: ");printf("%s\n",yytext);yylval = strdup(yytext);}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
 #line 39 "scanner.l"
-{yylexerrs++;yyerror("Error Léxico:\t\t\tConstante invalida:\n");}
+{yylexerrs++;yyerror("Error Léxico: Constante invalida: ");printf("%s\n",yytext);yylval = strdup(yytext);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
 #line 40 "scanner.l"
-{yylexerrs++; yyerror("Error Léxico:\t\t\tIdentificador invalido: \n");}
+{yylexerrs++; yyerror("Error Léxico: Identificador invalido: ");printf("%s\n",yytext);yylval = strdup(yytext);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
