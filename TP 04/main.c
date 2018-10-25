@@ -1,3 +1,17 @@
+/*
+
+TP04- 2018
+
+
+Grupo 04:
+
+Cirillo, Franco         1636182
+Díaz Pereyra, Mariano   1635037
+García, Victoria        1644105
+Seijo, Federico         1642121
+
+*/
+
 #include <stdio.h>
 #include "parser_bison.h"
 #include "scanner_flex.h"
