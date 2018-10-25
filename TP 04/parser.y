@@ -36,11 +36,11 @@ sentencia: LEER'(' identificadores ')' {printf("leer\n");}
 		| ID ASIG expresion {printf("asignacion\n");}
 		| error
 		; 
-identificadores: ID  ',' identificadores
+identificadores: identificadores ',' ID 
 		| ID
 		;
-expresiones: expresion ',' expresiones 
-		| expresion
+expresiones: expresiones ',' expresion
+		| expresion 
 		;
 expresion: expresion '+' expresion {printf("suma\n");}
 		| expresion '-' expresion {printf("resta\n");}
