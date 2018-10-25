@@ -1,0 +1,4 @@
+flex scanner.l
+bison parser.y
+gcc -Wall -o compilador scanner.c parser.c main.c -lfl
+./compilador <entradaok.txt

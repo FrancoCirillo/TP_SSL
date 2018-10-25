@@ -8,7 +8,14 @@
 %option noinput
 %option nounput
 %option yylineno
-
+%{	
+	char buffer[100];
+	const char* cargarOracion (char buffer[],char * tipoError, char* textoError){
+		sprintf(buffer, "%s%s", tipoError, textoError);
+		return buffer;
+	}
+	
+%}
 L  [[:alpha:]]
 D  [0-9]
 LD [[:alnum:]]
@@ -35,7 +42,7 @@ fin 		{yylval = strdup(yytext);return FIN;}
 "." 		{return '.';}
 {S}+    	;/*ignorar*/
 "//".* 		;/*  ignorar*/
-{O}+ 		{yylexerrs++;yyerror("Error Léxico: Cadena desconocida: ");printf("%s\n",yytext);}
-{D}+{L}+{LD}*	{yylexerrs++;yyerror("Error Léxico: Constante invalida: ");printf("%s\n",yytext);}
-{L}{LD}*{O}+([^[:space:]()*+\-/,.])* {yylexerrs++; yyerror("Error Léxico: Identificador invalido: ");printf("%s\n",yytext);}
+{O}+ 		{yylexerrs++;yyerror(cargarOracion(buffer, "Error Léxico: Cadena desconocida: ", yytext));}
+{D}+{L}+{LD}*	{yylexerrs++;yyerror(cargarOracion(buffer,"Error Léxico: Constante invalida: ", yytext));}
+{L}{LD}*{O}+([^[:space:]()*+\-/,.])* {yylexerrs++; yyerror(cargarOracion(buffer,"Error Léxico: Identificador invalido: ",yytext));}
 %%

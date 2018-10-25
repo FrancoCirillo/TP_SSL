@@ -1547,21 +1547,3 @@ yyreturn:
 #line 55 "parser.y" /* yacc.c:1906  */
 
 
-int yylexerrs = 0;
-int yynerrs = 0;
-int main() {
-	switch( yyparse() ){
-	case 0:
-		puts("Pertenece al LIC"); return 0;
-	case 1:
-		puts("No pertenece al LIC"); return 1;
-	case 2:
-		puts("Memoria insuficiente"); return 2;
-	}
-	return 0;
-}
-
-void yyerror(const char *s){
-	printf("línea #%d: %s\n", yylineno, s);
-	return;
-}
