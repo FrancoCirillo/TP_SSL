@@ -28,7 +28,7 @@ definiciones: definiciones DEF ID '.' {printf("definir %s\n", $ID);}
 		| DEF ID '.' {printf("definir %s\n", $ID);}
 		| error '.'
 		;
-sentencias: sentencias sentencia '.' 
+sentencias: sentencia '.' sentencias
 		| sentencia '.'
 		;
 sentencia: LEER'(' identificadores ')' {printf("leer\n");}
@@ -36,10 +36,10 @@ sentencia: LEER'(' identificadores ')' {printf("leer\n");}
 		| ID ASIG expresion {printf("asignacion\n");}
 		| error
 		; 
-identificadores:| identificadores ID  ','
+identificadores: ID  ',' identificadores
 		| ID
 		;
-expresiones: expresiones expresion ',' 
+expresiones: expresion ',' expresiones 
 		| expresion
 		;
 expresion: expresion '+' expresion {printf("suma\n");}
