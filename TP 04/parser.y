@@ -5,20 +5,19 @@
 %code provides{
 void yyerror(const char *);
 extern int yylexerrs;
+int yynerrs;
 }
 %defines "parser_bison.h"
 %output "parser.c"
 %token PROG FIN VAR COD DEF LEER ESC ID CTE
-%right ASIG
 %left '+' '-'
 %left '/' '*'
 %precedence NEG 
-%precedence '(' ')'
 %define api.value.type {char *}
 %define parse.error verbose
 
 %%
-todo	: mini { if (yynerrs || yylexerrs) YYABORT;}
+todo	: mini { if (yynerrs || yylexerrs) YYABORT; else YYACCEPT;}
 mini 	: PROG programa FIN
 		;
 programa: VAR definiciones COD sentencias 
