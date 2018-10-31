@@ -9,7 +9,7 @@ int yynerrs;
 }
 %defines "parser_bison.h"
 %output "parser.c"
-%token PROG FIN VAR COD DEF LEER ESC ID CTE
+%token PROG FIN VAR COD DEF LEER ESC ID CTE ASIG
 %left '+' '-'
 %left '/' '*'
 %precedence NEG 

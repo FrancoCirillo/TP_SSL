@@ -75,7 +75,8 @@ int yyparse (void);
 
 void yyerror(const char *);
 extern int yylexerrs;
+int yynerrs;
 
-#line 80 "parser_bison.h" /* yacc.c:1909  */
+#line 81 "parser_bison.h" /* yacc.c:1909  */
 
 #endif /* !YY_YY_PARSER_BISON_H_INCLUDED  */
