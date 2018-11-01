@@ -17,7 +17,7 @@ Seijo, Federico         1642121
 #include "scanner_flex.h"
 
 int yylexerrs = 0;
-int yynerrs = 0;
+
 int main() {
 	switch( yyparse() ){
 	case 0:
