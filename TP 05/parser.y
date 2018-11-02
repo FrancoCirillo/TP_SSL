@@ -45,14 +45,14 @@ identificadores: identificadores ',' ID {leerID(&diccionario, $ID);}
 expresiones: expresiones ',' expresion
 		| expresion 
 		;
-expresion: expresion '+' expresion {declararTmp(&diccionario);printf("suma\n");}
-		| expresion '-' expresion {declararTmp(&diccionario);printf("resta\n");}
-		| expresion '*' expresion {declararTmp(&diccionario);printf("multiplicacion\n");}
-		| expresion '/' expresion {declararTmp(&diccionario);printf("division\n");}
+expresion: expresion '+' expresion {aplFuncion(&diccionario, "ADD", $1, $3, declararTmp(&diccionario)->lexema);}	
+		| expresion '-' expresion {aplFuncion(&diccionario, "SUBS", $1, $3, declararTmp(&diccionario)->lexema);}	
+		| expresion '*' expresion {aplFuncion(&diccionario, "MULT", $1, $3, declararTmp(&diccionario)->lexema);}
+		| expresion '/' expresion {aplFuncion(&diccionario, "DIV", $1, $3, declararTmp(&diccionario)->lexema);}
 		| CTE
-		| '(' expresion ')' {declararTmp(&diccionario);printf("parentesis\n");}
+		| '(' expresion ')' 
 		| ID
-		| '-' expresion %prec NEG {declararTmp(&diccionario);printf("inversion\n");}		
+		| '-' expresion %prec NEG {INV(&diccionario, $2, declararTmp(&diccionario)->lexema);}		
 		;
 
 %%

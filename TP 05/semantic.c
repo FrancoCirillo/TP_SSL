@@ -60,7 +60,7 @@ struct Dicc * declararTmp(struct Dicc ** inicio){
 }
 
 void aplFuncion(struct Dicc ** inicio, char* operador, char* operando1, char* operando2, char* opGuardado){
-	printf("SUM %s,%s,%s\n", operando1, operando2, opGuardado);
+	printf("%s %s,%s,%s\n", operador, operando1, operando2, opGuardado);
 	
 }
 
