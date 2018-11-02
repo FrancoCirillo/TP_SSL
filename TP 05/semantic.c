@@ -15,11 +15,37 @@
 
 struct Dicc *inicio = NULL;
 
-void declararID(struct Dicc ** inicio, char nombreID[], int valor){
+int main(){
+	declararID(&inicio, "bueno");
+	declararID(&inicio, "tamosBien");
+	declararID(&inicio, "algo");
+	declararID(&inicio, "anuel");
+	declararID(&inicio, "anuel");
+	declararID(&inicio, "SKEREE");
+	asignarValor(&inicio, "SKEREE", 666);
+	asignarValor(&inicio, "algo", 77);
+	mostrarLista(inicio);
+	
+	return 0;
+}
+
+
+
+void declararID(struct Dicc ** inicio, char nombreID[]){
 	if(estaEnElDic(inicio, nombreID)){
-		printf("%s ya estaba declarado\n",nombreID);
+		printf("No se pudo declarar '%s', ya estaba declarado\n",nombreID);
 	}
 	else{
-		insertar(inicio, nombreID, valor);
+		printf("Decalre %s, Integer\n", nombreID);
+		insertar(inicio, nombreID, 0); //Todas las variables se inicializan en 0
+	}
+}
+
+void asignarValor(struct Dicc ** inicio, char nombreID[], int valorNuevo){
+	if(estaEnElDic(inicio, nombreID)){
+		buscarLexema(inicio, nombreID)->valor = valorNuevo;
+	}
+	else{
+		printf("La variable %s no esta declarada",nombreID);
 	}
 }
