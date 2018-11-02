@@ -34,3 +34,8 @@ struct Dicc * buscarLexema(struct Dicc **lista, char lexBuscado[]){
     }
     return ptr; // Si no lo encontro retorna NULL, si no retorna el puntero al lexema
 }
+
+int estaEnElDic(struct Dicc ** inicio, char nombreID[]){
+	if(buscarLexema(inicio, nombreID)==NULL) return 0;
+	else return 1;
+}
