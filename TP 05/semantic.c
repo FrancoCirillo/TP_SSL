@@ -29,7 +29,7 @@ void declararID(struct Dicc ** inicio, char nombreID[]){
 
 void asignarValor(struct Dicc ** inicio, char nombreID[], char* valorNuevo){
 	if(estaEnElDic(inicio, nombreID)){
-		strncpy(buscarLexema(inicio, nombreID)->valor, valorNuevo, sizeof(char));
+		strncpy(buscarLexema(inicio, nombreID)->valor, valorNuevo, sizeof(buscarLexema(inicio, nombreID)->valor)); //Escribirlo bien
 		buscarLexema(inicio, nombreID)->valor[LARGO_VALOR-1] = '\0';
 	}
 	else{
@@ -49,17 +49,17 @@ void leerID(struct Dicc ** inicio, char nombreID[]){
 	}
 }
 
-void declararTmp(struct Dicc ** inicio){
+struct Dicc * declararTmp(struct Dicc ** inicio){
 	char nombreTemporal[16];
 	sprintf(nombreTemporal, "Temporal#%d", cantTemporales);
 	
 	printf("Declare %s, Integer\n", nombreTemporal);
 	insertar(inicio, nombreTemporal, "0");
 	cantTemporales++;
-
+	return * inicio;
 }
 
-void aplicarFuncion(char* operando1, char* operando2, char* opGuardado){
+void aplFuncion(struct Dicc ** inicio, char* operador, char* operando1, char* operando2, char* opGuardado){
 	printf("SUM %s,%s,%s\n", operando1, operando2, opGuardado);
 	
 }
