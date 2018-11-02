@@ -23,13 +23,14 @@ void declararID(struct Dicc ** inicio, char nombreID[]){
 	}
 	else{
 		printf("Decalre %s, Integer\n", nombreID); //Cambiar Integer por %s
-		insertar(inicio, nombreID, 0); //Todas las variables se inicializan en 0
+		insertar(inicio, nombreID, "0"); //Todas las variables se inicializan en 0
 	}
 }
 
-void asignarValor(struct Dicc ** inicio, char nombreID[], int valorNuevo){
+void asignarValor(struct Dicc ** inicio, char nombreID[], char* valorNuevo){
 	if(estaEnElDic(inicio, nombreID)){
-		buscarLexema(inicio, nombreID)->valor = valorNuevo;
+		strncpy(buscarLexema(inicio, nombreID)->valor, valorNuevo, sizeof(char));
+		buscarLexema(inicio, nombreID)->valor[LARGO_VALOR-1] = '\0';
 	}
 	else{
 		yyerror(cargarOracion(buffer, "Error semantico: no se encontro declaracion de ", nombreID));
@@ -53,11 +54,20 @@ void declararTmp(struct Dicc ** inicio){
 	sprintf(nombreTemporal, "Temporal#%d", cantTemporales);
 	
 	printf("Declare %s, Integer\n", nombreTemporal);
-	insertar(inicio, nombreTemporal, 0);
+	insertar(inicio, nombreTemporal, "0");
 	cantTemporales++;
 
 }
 
+void aplicarFuncion(char* operando1, char* operando2, char* opGuardado){
+	printf("SUM %s,%s,%s\n", operando1, operando2, opGuardado);
+	
+}
+
+void INV(struct Dicc ** inicio, char* operando1, char* opGuardado){
+	printf("INV %s, ,%s\n", operando1, opGuardado);
+	asignarValor(inicio, opGuardado, operando1);
+}
 //~ void guardarTemporal(struct Dicc ** inicio, int valorAGuardar){
 	//~ char nombreTemporal[100];
 	//~ sprintf(nombreTemporal, "Temporal#%d", cantTemporales);

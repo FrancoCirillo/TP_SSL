@@ -49,7 +49,7 @@ expresion: expresion '+' expresion {declararTmp(&diccionario);printf("suma\n");}
 		| expresion '-' expresion {declararTmp(&diccionario);printf("resta\n");}
 		| expresion '*' expresion {declararTmp(&diccionario);printf("multiplicacion\n");}
 		| expresion '/' expresion {declararTmp(&diccionario);printf("division\n");}
-		| CTE 
+		| CTE
 		| '(' expresion ')' {declararTmp(&diccionario);printf("parentesis\n");}
 		| ID
 		| '-' expresion %prec NEG {declararTmp(&diccionario);printf("inversion\n");}		

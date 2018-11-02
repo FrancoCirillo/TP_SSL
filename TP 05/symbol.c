@@ -10,20 +10,22 @@ void mostrarLista(struct Dicc *inicio) {
 
 	printf("\n[inicio] =>");
 	while(ptr != NULL) {        
-	  printf(" %s, %d =>",ptr->lexema, ptr->valor);
+	  printf(" %s, %s =>",ptr->lexema, ptr->valor);
 	  ptr = ptr->sig;
 	}
 	printf(" [null]\n");
 }
 
-struct Dicc * insertar(struct Dicc ** inicio, char *lex, int valor) {
+struct Dicc * insertar(struct Dicc ** inicio, char *lex, char* valorNuevo) {
+	
 	struct Dicc *link = (struct Dicc*) malloc(sizeof(struct Dicc));
-
 	strncpy(link->lexema, lex, sizeof(link->lexema));
 	link->lexema[LARGO_ID-1] = '\0';
-	link->valor = valor;
+	strncpy(link->valor, valorNuevo, sizeof(link->valor));
+	link->valor[LARGO_VALOR-1] = '\0';
 	link->sig = * inicio;
 	* inicio = link;
+	
 	return * inicio;
 }
 
