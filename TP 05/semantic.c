@@ -14,7 +14,7 @@
 #include "semantic.h"
 #include "errores.h"
 
-int cantTemporales = 0;
+int cantTemporales = 1;
 
 void declararID(struct Dicc ** inicio, char nombreID[]){
 	if(estaEnElDic(inicio, nombreID)){
@@ -48,7 +48,20 @@ void leerID(struct Dicc ** inicio, char nombreID[]){
 	}
 }
 
-void guardarTemporal(struct Dicc ** inicio, int valorAGuardar){
-	char nombreTemporal[100];
+void declararTmp(struct Dicc ** inicio){
+	char nombreTemporal[16];
 	sprintf(nombreTemporal, "Temporal#%d", cantTemporales);
+	
+	printf("Declare %s, Integer\n", nombreTemporal);
+	insertar(inicio, nombreTemporal, 0);
+	cantTemporales++;
+
 }
+
+//~ void guardarTemporal(struct Dicc ** inicio, int valorAGuardar){
+	//~ char nombreTemporal[100];
+	//~ sprintf(nombreTemporal, "Temporal#%d", cantTemporales);
+	//~ insertar(inicio, nombreTemporal, valorAGuardar);
+	//~ printf("Declare %s, Integer\n", nombreTemporal);
+	
+//~ }
