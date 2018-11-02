@@ -20,7 +20,7 @@ struct Dicc * insertar(struct Dicc ** inicio, char *lex, int valor) {
 	struct Dicc *link = (struct Dicc*) malloc(sizeof(struct Dicc));
 
 	strncpy(link->lexema, lex, sizeof(link->lexema));
-	link->lexema[15] = '\0';
+	link->lexema[LARGO_ID-1] = '\0';
 	link->valor = valor;
 	link->sig = * inicio;
 	* inicio = link;

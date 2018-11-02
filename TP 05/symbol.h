@@ -1,8 +1,8 @@
 #ifndef DICCIONARIO
+#define LARGO_ID 32
 #define DICCIONARIO
-
 struct Dicc {
-	char lexema[16];
+	char lexema[LARGO_ID];
 	int valor;
 	struct Dicc *sig;
 };
