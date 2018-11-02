@@ -1,14 +1,15 @@
-#ifndef DiccIONARIO
+#ifndef DICCIONARIO
 #define DICCIONARIO
-#define LARGO_ID 16
+
 struct Dicc {
-	char lexema[LARGO_ID];
+	char lexema[16];
 	int valor;
 	struct Dicc *sig;
 };
-#endif // DiccIONARIO
 
-
-void insertar(char*, int);
-void mostrarLista();
+struct Dicc * insertar(struct Dicc **, char*, int);
+void mostrarLista(struct Dicc *);
 struct Dicc * buscarLexema(struct Dicc *lista, char word[]);
+
+#endif // DICCIONARIO
+
