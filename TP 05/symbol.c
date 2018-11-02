@@ -7,12 +7,17 @@
 struct Dicc *inicio = NULL;
 
 int main(){
+	insertar("bueno", 5);
+	insertar("tamosBien", 25);
 	insertar("algo", 15);
-	mostrarLista();
+	insertar("anuel", 15);
+	struct Dicc * encontrado = buscarLexema(inicio, "algo");
+	mostrarLista(encontrado);
+	
 	return 0;
 }
 
-void mostrarLista() {
+void mostrarLista(struct Dicc *inicio) {
 
 	struct Dicc *ptr = inicio;
 
