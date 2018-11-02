@@ -12,28 +12,12 @@
 #include "scanner_flex.h"
 #include "symbol.h"
 #include "semantic.h"
-
-
-/*
-int main(){
-	declararID(&inicio, "bueno");
-	declararID(&inicio, "tamosBien");
-	declararID(&inicio, "algo");
-	declararID(&inicio, "anuel");
-	declararID(&inicio, "anuel");
-	declararID(&inicio, "SKEREE");
-	asignarValor(&inicio, "SKEREE", 666);
-	asignarValor(&inicio, "algo", 77);
-	mostrarLista(inicio);
-	
-	return 0;
-}
-*/
-
+#include "errores.h"
 
 void declararID(struct Dicc ** inicio, char nombreID[]){
 	if(estaEnElDic(inicio, nombreID)){
-		printf("No se pudo declarar '%s', ya estaba declarado\n",nombreID);
+		yyerror(cargarOracion(buffer, "Error semantico: no se pude volver a declarar ", nombreID));
+//		printf("No se pudo declarar '%s', ya estaba declarado\n",nombreID);
 	}
 	else{
 		printf("Decalre %s, Integer\n", nombreID);

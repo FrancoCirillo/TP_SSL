@@ -2,20 +2,14 @@
 #include <stdio.h>
 #include <strings.h>
 #include "parser_bison.h"
+#include "errores.h"
 }
 %option outfile="scanner.c"
 %option header-file="scanner_flex.h"
 %option noinput
 %option nounput
 %option yylineno
-%{	
-	char buffer[100];
-	const char* cargarOracion (char buffer[],char * tipoError, char* textoError){
-		sprintf(buffer, "%s%s", tipoError, textoError);
-		return buffer;
-	}
-	
-%}
+
 L  [[:alpha:]]
 D  [0-9]
 LD [[:alnum:]]

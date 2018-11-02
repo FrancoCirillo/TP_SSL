@@ -138,7 +138,7 @@ int yyparse (void);
 void yyerror(const char *);
 extern int yylexerrs;
 int yynerrs;
-struct Dicc * diccionarioDatos;
+struct Dicc * diccionario;
 
 #line 144 "parser.c" /* yacc.c:355  */
 
@@ -1255,13 +1255,13 @@ yyreduce:
 
   case 6:
 #line 29 "parser.y" /* yacc.c:1646  */
-    {declararID(&diccionarioDatos, (yyvsp[-1]));}
+    {declararID(&diccionario, (yyvsp[-1]));}
 #line 1260 "parser.c" /* yacc.c:1646  */
     break;
 
   case 7:
 #line 30 "parser.y" /* yacc.c:1646  */
-    {printf("definir %s\n", (yyvsp[-1]));}
+    {declararID(&diccionario, (yyvsp[-1]));}
 #line 1266 "parser.c" /* yacc.c:1646  */
     break;
 

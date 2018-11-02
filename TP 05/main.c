@@ -14,7 +14,7 @@ Seijo, Federico         1642121
 
 #include <stdio.h>
 #include "parser_bison.h"
-#include "scanner_flex.h"
+#include "errores.h"
 
 int yylexerrs = 0;
 
@@ -31,7 +31,3 @@ int main() {
 	return 0;
 }
 
-void yyerror(const char *s){
-	printf("línea #%d: %s\n", yylineno, s);
-	return;
-}

@@ -76,7 +76,7 @@ int yyparse (void);
 void yyerror(const char *);
 extern int yylexerrs;
 int yynerrs;
-struct Dicc * diccionarioDatos;
+struct Dicc * diccionario;
 
 #line 82 "parser_bison.h" /* yacc.c:1909  */
 

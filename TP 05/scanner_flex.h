@@ -6,8 +6,9 @@
 #include <stdio.h>
 #include <strings.h>
 #include "parser_bison.h"
+#include "errores.h"
 
-#line 11 "scanner_flex.h"
+#line 12 "scanner_flex.h"
 
 #define  YY_INT_ALIGNED short int
 
@@ -469,9 +470,9 @@ extern int yylex (void);
 #undef yyTABLES_NAME
 #endif
 
-#line 48 "scanner.l"
+#line 42 "scanner.l"
 
 
-#line 476 "scanner_flex.h"
+#line 477 "scanner_flex.h"
 #undef yyIN_HEADER
 #endif /* yyHEADER_H */
