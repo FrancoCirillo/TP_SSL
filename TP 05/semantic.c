@@ -9,8 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "symbol.h"
-
-void declararID(char* nombreID, int valor);
+#include "semantic.h"
 
 struct Dicc *inicio = NULL;
 
@@ -19,7 +18,16 @@ int main(){
 	insertar(&inicio, "tamosBien", 25);
 	insertar(&inicio, "algo", 15);
 	insertar(&inicio, "anuel", 15);
+	declararID(&inicio, "SKEREEE", 666);
 	mostrarLista(inicio);
 	
 	return 0;
+}
+
+
+void declararID(struct Dicc ** inicio, char nombreID[], int valor){
+	struct Dicc * lugarDelLexema = buscarLexema(inicio, nombreID);
+	if(lugarDelLexema == NULL){
+		insertar(inicio, nombreID, valor);
+	}
 }

@@ -20,15 +20,15 @@ struct Dicc * insertar(struct Dicc ** inicio, char *lex, int valor) {
 	struct Dicc *link = (struct Dicc*) malloc(sizeof(struct Dicc));
 
 	strncpy(link->lexema, lex, sizeof(link->lexema));
-	link->lexema[9] = '\0';
+	link->lexema[15] = '\0';
 	link->valor = valor;
 	link->sig = * inicio;
 	* inicio = link;
 	return * inicio;
 }
 
-struct Dicc * buscarLexema(struct Dicc *lista, char lexBuscado[]){
-	struct Dicc *ptr = lista;
+struct Dicc * buscarLexema(struct Dicc **lista, char lexBuscado[]){
+	struct Dicc *ptr = * lista;
     while (ptr!=NULL && strcmp(ptr->lexema, lexBuscado) != 0){
         ptr = ptr->sig;
     }

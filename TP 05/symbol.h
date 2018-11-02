@@ -9,7 +9,7 @@ struct Dicc {
 
 struct Dicc * insertar(struct Dicc **, char*, int);
 void mostrarLista(struct Dicc *);
-struct Dicc * buscarLexema(struct Dicc *lista, char word[]);
+struct Dicc * buscarLexema(struct Dicc **, char[]);
 
 #endif // DICCIONARIO
 
