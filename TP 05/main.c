@@ -1,6 +1,6 @@
 /*
 
-TP04- 2018
+TP05- 2018
 
 
 Grupo 04:
@@ -27,7 +27,7 @@ int main() {
 	case 2:
 		puts("Memoria insuficiente"); break;
 	}
-	printf("Errores sintacticos: %d - Errores lexicos: %d \n", yynerrs, yylexerrs);
+	printf("Errores sintacticos: %d - Errores lexicos: %d \n", yynerrs, yylexerrs); //Errores semanticos = ¿yysmerrs?
 	return 0;
 }
 

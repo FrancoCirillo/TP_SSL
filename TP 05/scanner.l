@@ -41,7 +41,7 @@ fin 		{return FIN;}
 "," 		{return ',';}
 "." 		{return '.';}
 {S}+    	;/*ignorar*/
-"//".* 		;/*  ignorar*/
+"//".* 		;/*ignorar*/
 {O}+ 		{yylexerrs++;yyerror(cargarOracion(buffer, "Error Léxico: Cadena desconocida: ", yytext));}
 {D}+{L}+{LD}*	{yylexerrs++;yyerror(cargarOracion(buffer,"Error Léxico: Constante invalida: ", yytext));}
 {L}{LD}*{O}+([^[:space:]()*+\-/,.])* {yylexerrs++; yyerror(cargarOracion(buffer,"Error Léxico: Identificador invalido: ",yytext));}
