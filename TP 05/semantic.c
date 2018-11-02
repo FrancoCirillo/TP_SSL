@@ -14,7 +14,7 @@
 #include "semantic.h"
 #include "errores.h"
 
-
+int cantTemporales = 0;
 
 void declararID(struct Dicc ** inicio, char nombreID[]){
 	if(estaEnElDic(inicio, nombreID)){
@@ -46,4 +46,9 @@ void leerID(struct Dicc ** inicio, char nombreID[]){
 		yyerror(cargarOracion(buffer, "Error semantico: no se encontro declaracion de ", nombreID));
 		aumentarErrSeman();
 	}
+}
+
+void guardarTemporal(struct Dicc ** inicio, int valorAGuardar){
+	char nombreTemporal[100];
+	sprintf(nombreTemporal, "Temporal#%d", cantTemporales);
 }
