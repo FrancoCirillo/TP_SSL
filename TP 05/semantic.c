@@ -13,8 +13,8 @@
 #include "symbol.h"
 #include "semantic.h"
 
-struct Dicc *inicio = NULL;
 
+/*
 int main(){
 	declararID(&inicio, "bueno");
 	declararID(&inicio, "tamosBien");
@@ -28,7 +28,7 @@ int main(){
 	
 	return 0;
 }
-
+*/
 
 
 void declararID(struct Dicc ** inicio, char nombreID[]){

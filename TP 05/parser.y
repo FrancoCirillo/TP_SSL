@@ -1,11 +1,14 @@
 %code top{
 #include <stdio.h>
 #include "scanner_flex.h"
+#include "symbol.h"
+#include "semantic.h"
 }
 %code provides{
 void yyerror(const char *);
 extern int yylexerrs;
 int yynerrs;
+struct Dicc * diccionarioDatos;
 }
 %defines "parser_bison.h"
 %output "parser.c"
@@ -23,7 +26,7 @@ mini 	: PROG programa FIN
 programa: VAR definiciones COD sentencias 
 		| VAR COD sentencias
 		;
-definiciones: definiciones DEF ID '.' {printf("definir %s\n", $ID);}
+definiciones: definiciones DEF ID '.' {declararID(&diccionarioDatos, $ID);}
 		| DEF ID '.' {printf("definir %s\n", $ID);}
 		| error '.'
 		;
