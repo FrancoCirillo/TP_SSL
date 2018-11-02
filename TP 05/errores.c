@@ -12,3 +12,5 @@ const char* cargarOracion (char buffer[],char * tipoError, char* textoError){
 		sprintf(buffer, "%s%s", tipoError, textoError);
 		return buffer;
 }
+
+void aumentarErrSeman(){errSeman++;}

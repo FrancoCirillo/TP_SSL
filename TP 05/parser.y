@@ -3,6 +3,7 @@
 #include "scanner_flex.h"
 #include "symbol.h"
 #include "semantic.h"
+#include "errores.h"
 }
 %code provides{
 void yyerror(const char *);
@@ -20,7 +21,7 @@ struct Dicc * diccionario;
 %define parse.error verbose
 
 %%
-todo	: mini { if (yynerrs || yylexerrs) YYABORT; else YYACCEPT;}
+todo	: mini { if (yynerrs || yylexerrs || errSeman) YYABORT; else YYACCEPT;}
 mini 	: PROG programa FIN
 		;
 programa: VAR definiciones COD sentencias 
@@ -33,13 +34,13 @@ definiciones: definiciones DEF ID '.' {declararID(&diccionario, $ID);}
 sentencias: sentencias sentencia '.'
 		| sentencia '.'
 		;
-sentencia: LEER'(' identificadores ')' {printf("leer\n");}
+sentencia: LEER'(' identificadores ')'
 		| ESC '(' expresiones ')' {printf("escribir\n");}
 		| ID ASIG expresion {printf("asignacion\n");}
 		| error
 		; 
-identificadores: identificadores ',' ID 
-		| ID
+identificadores: identificadores ',' ID {leerID(&diccionario, $ID);}
+		| ID {leerID(&diccionario, $ID);}
 		;
 expresiones: expresiones ',' expresion
 		| expresion 

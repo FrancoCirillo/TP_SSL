@@ -14,13 +14,15 @@
 #include "semantic.h"
 #include "errores.h"
 
+
+
 void declararID(struct Dicc ** inicio, char nombreID[]){
 	if(estaEnElDic(inicio, nombreID)){
 		yyerror(cargarOracion(buffer, "Error semantico: no se pude volver a declarar ", nombreID));
-//		printf("No se pudo declarar '%s', ya estaba declarado\n",nombreID);
+		aumentarErrSeman();
 	}
 	else{
-		printf("Decalre %s, Integer\n", nombreID);
+		printf("Decalre %s, Integer\n", nombreID); //Cambiar Integer por %s
 		insertar(inicio, nombreID, 0); //Todas las variables se inicializan en 0
 	}
 }
@@ -30,6 +32,18 @@ void asignarValor(struct Dicc ** inicio, char nombreID[], int valorNuevo){
 		buscarLexema(inicio, nombreID)->valor = valorNuevo;
 	}
 	else{
-		printf("La variable %s no esta declarada",nombreID);
+		yyerror(cargarOracion(buffer, "Error semantico: no se encontro declaracion de ", nombreID));
+		aumentarErrSeman();
+	}
+}
+
+
+void leerID(struct Dicc ** inicio, char nombreID[]){
+	if(estaEnElDic(inicio, nombreID)){
+		printf("Read %s, Integer\n", nombreID);
+	}
+	else{
+		yyerror(cargarOracion(buffer, "Error semantico: no se encontro declaracion de ", nombreID));
+		aumentarErrSeman();
 	}
 }

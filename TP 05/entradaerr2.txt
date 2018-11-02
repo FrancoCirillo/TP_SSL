@@ -9,5 +9,5 @@ programa
 		leer (var1, var2).
 		total <- var1 + 32z 23 * -var5.
 		var2#2@1 <- 2 * (512 + 4) .
-		escritura (total/2).
+		escritura (ups/2).
 fin

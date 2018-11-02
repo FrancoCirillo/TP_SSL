@@ -17,6 +17,7 @@ Seijo, Federico         1642121
 #include "errores.h"
 
 int yylexerrs = 0;
+int errSeman = 0;
 
 int main() {
 	switch( yyparse() ){
@@ -27,7 +28,7 @@ int main() {
 	case 2:
 		puts("Memoria insuficiente"); break;
 	}
-	printf("Errores sintacticos: %d - Errores lexicos: %d \n", yynerrs, yylexerrs); //Errores semanticos = ¿yysmerrs?
+	printf("Errores sintacticos: %d - Errores lexicos: %d - Errores semanticos: %d \n", yynerrs, yylexerrs, errSeman);
 	return 0;
 }
 
