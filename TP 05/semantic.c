@@ -53,6 +53,10 @@ void escribirExp(struct Dicc ** inicio, char * expresion){
 		printf("Write %s, Integer\n", expresion);
 }
 
+void asignar(struct Dicc ** inicio, char * id, char * expresion){
+		printf("Store %s,%s\n", expresion,id);
+}
+
 struct Dicc * declararTmp(struct Dicc ** inicio, char* valorNuevo){ //declararTmp no es el mejor nombre. quizas InicializarTMP
 	char nombreTemporal[16];
 	sprintf(nombreTemporal, "Temp#%d", cantTemporales);
@@ -66,3 +70,7 @@ char* aplFuncion(struct Dicc ** inicio, char* operador, char* operando1, char* o
 	printf("%s %s,%s,%s\n", operador, operando1, operando2, opGuardado);
 	return opGuardado;
 }
+
+void parar(){
+	puts("Stop");
+	}

@@ -21,7 +21,7 @@ struct Dicc * diccionario;
 %define parse.error verbose
 
 %%
-todo	: mini { if (yynerrs || yylexerrs || errSeman) YYABORT; else YYACCEPT;}
+todo	: mini { if (yynerrs || yylexerrs || errSeman) YYABORT; else YYACCEPT; parar();}
 mini 	: PROG programa FIN
 		;
 programa: VAR definiciones COD sentencias 
@@ -36,7 +36,7 @@ sentencias: sentencias sentencia '.'
 		;
 sentencia: LEER'(' identificadores ')'
 		| ESC '(' expresiones ')'
-		| ID ASIG expresion {printf("asignacion\n");}
+		| ID ASIG expresion  {asignar(&diccionario, $ID, $expresion); $ID = $expresion;}
 		| error
 		; 
 identificadores: identificadores ',' ID {leerID(&diccionario, $ID);}
