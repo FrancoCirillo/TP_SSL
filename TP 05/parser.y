@@ -35,15 +35,15 @@ sentencias: sentencias sentencia '.'
 		| sentencia '.'
 		;
 sentencia: LEER'(' identificadores ')'
-		| ESC '(' expresiones ')' {printf("escribir\n");}
+		| ESC '(' expresiones ')'
 		| ID ASIG expresion {printf("asignacion\n");}
 		| error
 		; 
 identificadores: identificadores ',' ID {leerID(&diccionario, $ID);}
 		| ID {leerID(&diccionario, $ID);}
 		;
-expresiones: expresiones ',' expresion
-		| expresion 
+expresiones: expresiones ',' expresion {escribirExp(&diccionario, $1);}
+		| expresion  {escribirExp(&diccionario, $1);}
 		;
 expresion: expresion '+' expresion {$$ = aplFuncion(&diccionario, "ADD", $1, $3, declararTmp(&diccionario, $$)->lexema);}	
 		| expresion '-' expresion {$$ = aplFuncion(&diccionario, "SUBS", $1, $3, declararTmp(&diccionario, $$)->lexema);}	

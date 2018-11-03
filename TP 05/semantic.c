@@ -49,6 +49,10 @@ void leerID(struct Dicc ** inicio, char nombreID[]){
 	}
 }
 
+void escribirExp(struct Dicc ** inicio, char * expresion){
+		printf("Write %s, Integer\n", expresion);
+}
+
 struct Dicc * declararTmp(struct Dicc ** inicio, char* valorNuevo){ //declararTmp no es el mejor nombre. quizas InicializarTMP
 	char nombreTemporal[16];
 	sprintf(nombreTemporal, "Temp#%d", cantTemporales);

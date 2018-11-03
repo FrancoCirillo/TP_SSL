@@ -4,6 +4,7 @@
 void declararID(struct Dicc ** inicio, char nombreID[]);
 void asignarValor(struct Dicc ** inicio, char nombreID[], char* valorNuevo);
 void leerID(struct Dicc ** inicio, char nombreID[]);
+void escribirExp(struct Dicc ** inicio, char* expresion);
 struct Dicc * declararTmp(struct Dicc ** inicio, char* valorNuevo);
 extern int cantTemporales;
 
