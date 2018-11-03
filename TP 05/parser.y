@@ -45,14 +45,14 @@ identificadores: identificadores ',' ID {leerID(&diccionario, $ID);}
 expresiones: expresiones ',' expresion
 		| expresion 
 		;
-expresion: expresion '+' expresion {aplFuncion(&diccionario, "ADD", $1, $3, declararTmp(&diccionario, $$)->lexema);}	
-		| expresion '-' expresion {aplFuncion(&diccionario, "SUBS", $1, $3, declararTmp(&diccionario, $$)->lexema);}	
-		| expresion '*' expresion {aplFuncion(&diccionario, "MULT", $1, $3, declararTmp(&diccionario, $$)->lexema);}
-		| expresion '/' expresion {aplFuncion(&diccionario, "DIV", $1, $3, declararTmp(&diccionario, $$)->lexema);}
+expresion: expresion '+' expresion {$$ = aplFuncion(&diccionario, "ADD", $1, $3, declararTmp(&diccionario, $$)->lexema);}	
+		| expresion '-' expresion {$$ = aplFuncion(&diccionario, "SUBS", $1, $3, declararTmp(&diccionario, $$)->lexema);}	
+		| expresion '*' expresion {$$ = aplFuncion(&diccionario, "MULT", $1, $3, declararTmp(&diccionario, $$)->lexema);}
+		| expresion '/' expresion {$$ = aplFuncion(&diccionario, "DIV", $1, $3, declararTmp(&diccionario, $$)->lexema);}
 		| CTE
 		| '(' expresion ')' 
 		| ID
-		| '-' expresion %prec NEG  {aplFuncion(&diccionario, "INV", $2, "", declararTmp(&diccionario, $$)->lexema);}	
+		| '-' expresion %prec NEG  {$$ = aplFuncion(&diccionario, "INV", $2, "", declararTmp(&diccionario, $$)->lexema);}	
 		;
 
 %%
