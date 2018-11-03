@@ -49,29 +49,16 @@ void leerID(struct Dicc ** inicio, char nombreID[]){
 	}
 }
 
-struct Dicc * declararTmp(struct Dicc ** inicio){
+struct Dicc * declararTmp(struct Dicc ** inicio, char* valorNuevo){ //declararTmp no es el mejor nombre. quizas InicializarTMP
 	char nombreTemporal[16];
-	sprintf(nombreTemporal, "Temporal#%d", cantTemporales);
-	
-	printf("Declare %s, Integer\n", nombreTemporal);
-	insertar(inicio, nombreTemporal, "0");
+	sprintf(nombreTemporal, "Temp#%d", cantTemporales);
+	declararID(inicio, nombreTemporal);
+	asignarValor(inicio, nombreTemporal, valorNuevo);
 	cantTemporales++;
 	return * inicio;
 }
 
-void aplFuncion(struct Dicc ** inicio, char* operador, char* operando1, char* operando2, char* opGuardado){
+char* aplFuncion(struct Dicc ** inicio, char* operador, char* operando1, char* operando2, char* opGuardado){
 	printf("%s %s,%s,%s\n", operador, operando1, operando2, opGuardado);
-	
+	return opGuardado;
 }
-
-void INV(struct Dicc ** inicio, char* operando1, char* opGuardado){
-	printf("INV %s, ,%s\n", operando1, opGuardado);
-	asignarValor(inicio, opGuardado, operando1);
-}
-//~ void guardarTemporal(struct Dicc ** inicio, int valorAGuardar){
-	//~ char nombreTemporal[100];
-	//~ sprintf(nombreTemporal, "Temporal#%d", cantTemporales);
-	//~ insertar(inicio, nombreTemporal, valorAGuardar);
-	//~ printf("Declare %s, Integer\n", nombreTemporal);
-	
-//~ }
