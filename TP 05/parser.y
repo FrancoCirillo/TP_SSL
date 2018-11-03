@@ -21,7 +21,7 @@ struct Dicc * diccionario;
 %define parse.error verbose
 
 %%
-todo	: mini { if (yynerrs || yylexerrs || errSeman) YYABORT; else YYACCEPT; parar();}
+todo	: mini { if (yynerrs || yylexerrs || errSeman) {YYABORT; parar();} else {YYACCEPT; parar();}}
 mini 	: PROG programa FIN
 		;
 programa: VAR definiciones COD sentencias 
