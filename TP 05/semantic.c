@@ -70,7 +70,3 @@ char* aplFuncion(struct Dicc ** inicio, char* operador, char* operando1, char* o
 	printf("%s %s,%s,%s\n", operador, operando1, operando2, opGuardado);
 	return opGuardado;
 }
-
-void parar(){
-	puts("Stop");
-	}
