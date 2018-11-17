@@ -9,28 +9,28 @@
 
 int cantTemporales = 1;
 
-int validarID(char* id){
-	if(buscarLexema(id)!=NULL){
-		yyerror(cargarOracion(buffer, "Error semantico: no se pude volver a declarar ", id));
+void generar(char* funcion, char* ident, char* idObjetivo){
+			printf("%s %s, %s, Integer\n", funcion, idObjetivo, ident);
+}
+
+int validarID(char* nombreID){
+	if(buscarLexema(nombreID)!=NULL){
+		yyerror(cargarOracion(buffer, "Error semantico: no se pude volver a declarar ", nombreID));
 		errSeman++;
 		return 0;
 	}
 	return 1;
 }
 
-int verificarID(char* id){
-	if(buscarLexema(id)!=NULL)	return 1;
-	else{
-		yyerror(cargarOracion(buffer, "Error semantico: no se encontro declaracion de ", id));
+int verificarID(char* nombreID){
+	if(buscarLexema(nombreID)==NULL){
+		yyerror(cargarOracion(buffer, "Error semantico: no se encontro declaracion de ", nombreID));
 		errSeman++;
 		return 0;
-	}
-
+		}
+	return 1;
 }
 
-void generar(char* funcion, char* ident, char* idObjetivo){
-			printf("%s %s, %s, Integer\n", funcion, idObjetivo, ident);
-}
 
 void declararID(char nombreID[]){
 		generar("Declare", nombreID, "");
@@ -38,7 +38,12 @@ void declararID(char nombreID[]){
 }
 
 void leerID(char nombreID[]){
+	if(buscarLexema(nombreID)!=NULL){
 		generar("Read", nombreID, "");
+	}
+	else{
+		
+	}
 }
 
 void escribirExp(char * expresion){

@@ -1259,7 +1259,7 @@ yyreduce:
 
   case 6:
 #line 29 "parser.y" /* yacc.c:1646  */
-    {if(!validarID((yyvsp[-3]))) YYERROR;declararID((yyvsp[-1]));}
+    {if(!validarID((yyvsp[-1])))YYERROR;declararID((yyvsp[-1]));}
 #line 1264 "parser.c" /* yacc.c:1646  */
     break;
 
