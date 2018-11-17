@@ -35,7 +35,7 @@ sentencias: sentencias sentencia '.'
 		;
 sentencia: LEER'(' identificadores ')'
 		| ESC '(' expresiones ')'
-		| id ASIG expresion  {asignar($id, $expresion); $id= $expresion;}
+		| id ASIG expresion  {asignar($expresion, $id); $id= $expresion;}
 		| error
 		; 
 identificadores: identificadores ',' id {leerID($id);}

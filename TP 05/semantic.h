@@ -12,5 +12,5 @@ int validarID(char* id);
 int verificarID(char* id);
 char* aplFuncion(char* operador, char* operando1, char* operando2, char* opGuardado);
 
-void generar(char* funcion, char* ident, char* idObj);
+void generar(char* funcion, char* ident);
 #endif // RUTINAS_SEM

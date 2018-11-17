@@ -7,8 +7,8 @@
 
 int cantTemporales = 1;
 
-void generar(char* funcion, char* ident, char* idObjetivo){
-			printf("%s %s, %s, Integer\n", funcion, idObjetivo, ident);
+void generar(char* funcion, char* ident){
+			printf("%s %s, Integer\n", funcion, ident);
 }
 
 int validarID(char* nombreID){
@@ -31,20 +31,20 @@ int verificarID(char* nombreID){
 
 
 void declararID(char nombreID[]){
-		generar("Declare", nombreID, "");
+	generar("Declare", nombreID);
 		insertar(nombreID);
 }
 
 void leerID(char nombreID[]){
-		generar("Read", nombreID, "");
+	generar("Read", nombreID);
 }
 
 void escribirExp(char * expresion){
-	generar("Write", expresion, "");
+	generar("Write", expresion);
 }
 
-void asignar(char * id, char * idObjetivo){
-	generar("Store", id, idObjetivo);
+void asignar(char * idObjetivo, char * id){
+	printf("Store %s, %s\n", idObjetivo, id); // generear2(char* funcion, char * idObjetivo, char * id)??
 }
 
 struct Dicc * declararTmp(){ 

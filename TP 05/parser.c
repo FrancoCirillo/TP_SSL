@@ -1283,7 +1283,7 @@ yyreduce:
 
   case 14:
 #line 38 "parser.y" /* yacc.c:1646  */
-    {asignar((yyvsp[-2]), (yyvsp[0])); (yyvsp[-2])= (yyvsp[0]);}
+    {asignar((yyvsp[0]), (yyvsp[-2])); (yyvsp[-2])= (yyvsp[0]);}
 #line 1288 "parser.c" /* yacc.c:1646  */
     break;
 
