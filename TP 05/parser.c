@@ -1323,20 +1323,26 @@ yyreduce:
 #line 1324 "parser.c" /* yacc.c:1646  */
     break;
 
+  case 24:
+#line 52 "parser.y" /* yacc.c:1646  */
+    {(yyval) = (yyvsp[-1]);}
+#line 1330 "parser.c" /* yacc.c:1646  */
+    break;
+
   case 26:
 #line 54 "parser.y" /* yacc.c:1646  */
     {(yyval) = aplFuncion("INV", (yyvsp[0]), "", declararTmp()->lexema);}
-#line 1330 "parser.c" /* yacc.c:1646  */
+#line 1336 "parser.c" /* yacc.c:1646  */
     break;
 
   case 27:
 #line 57 "parser.y" /* yacc.c:1646  */
     {if(!verificarID((yyvsp[0]))) YYERROR;}
-#line 1336 "parser.c" /* yacc.c:1646  */
+#line 1342 "parser.c" /* yacc.c:1646  */
     break;
 
 
-#line 1340 "parser.c" /* yacc.c:1646  */
+#line 1346 "parser.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires

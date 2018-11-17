@@ -49,7 +49,7 @@ expresion: expresion '+' expresion {$$ = aplFuncion("ADD", $1, $3, declararTmp()
 		| expresion '*' expresion {$$ = aplFuncion("MULT", $1, $3, declararTmp()->lexema);}
 		| expresion '/' expresion {$$ = aplFuncion("DIV", $1, $3, declararTmp()->lexema);}
 		| CTE
-		| '(' expresion ')' 
+		| '(' expresion ')' {$$ = $2;}
 		| id
 		| '-' expresion %prec NEG  {$$ = aplFuncion("INV", $2, "", declararTmp()->lexema);}	
 		;

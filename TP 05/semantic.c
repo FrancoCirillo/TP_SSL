@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "parser_bison.h"
-#include "scanner_flex.h"
 #include "symbol.h"
 #include "semantic.h"
 #include "errores.h"
