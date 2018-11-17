@@ -12,7 +12,7 @@ int cantTemporales = 1;
 void declararID(char nombreID[]){
 	if(buscarLexema(nombreID)!=NULL){
 		yyerror(cargarOracion(buffer, "Error semantico: no se pude volver a declarar ", nombreID));
-		aumentarErrSeman();
+		errSeman++;;
 	}
 	else{
 		printf("Decalre %s, Integer\n", nombreID); //Cambiar Integer por %s
@@ -26,7 +26,7 @@ void leerID(char nombreID[]){
 	}
 	else{
 		yyerror(cargarOracion(buffer, "Error semantico: no se encontro declaracion de ", nombreID));
-		aumentarErrSeman();
+		errSeman++;;
 	}
 }
 
