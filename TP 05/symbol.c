@@ -1,4 +1,3 @@
-//Rutinas que manejan el Diccionario
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -23,9 +22,4 @@ struct Dicc * buscarLexema(char lexBuscado[]){
         ptr = ptr->sig;
     }
     return ptr;
-}
-
-int estaEnElDic(char nombreID[]){
-	if(buscarLexema(nombreID)==NULL) return 0;
-	else return 1;
 }

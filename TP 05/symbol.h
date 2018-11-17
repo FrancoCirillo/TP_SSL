@@ -10,7 +10,6 @@ struct Dicc {
 extern struct Dicc* diccionario; 
 struct Dicc * insertar(char*);
 struct Dicc * buscarLexema(char[]);
-int estaEnElDic(char nombreID[]);
 
 #endif // DICCIONARIO
 

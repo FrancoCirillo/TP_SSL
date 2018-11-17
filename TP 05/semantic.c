@@ -1,10 +1,3 @@
-/*
- * Rutinas semanticas 
- * Cuando haya errores semanticos usar YYERROR para dejar de analizar sintácticamente la sentencia o rutina donde ocurrió el error
- * No usar yyerrorok
-
-
-*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,7 +10,7 @@
 int cantTemporales = 1;
 
 void declararID(char nombreID[]){
-	if(estaEnElDic(nombreID)){
+	if(buscarLexema(nombreID)!=NULL){
 		yyerror(cargarOracion(buffer, "Error semantico: no se pude volver a declarar ", nombreID));
 		aumentarErrSeman();
 	}
@@ -28,7 +21,7 @@ void declararID(char nombreID[]){
 }
 
 void leerID(char nombreID[]){
-	if(estaEnElDic(nombreID)){
+	if(buscarLexema(nombreID)!=NULL){
 		printf("Read %s, Integer\n", nombreID);
 	}
 	else{
