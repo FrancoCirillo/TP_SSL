@@ -38,12 +38,7 @@ void declararID(char nombreID[]){
 }
 
 void leerID(char nombreID[]){
-	if(buscarLexema(nombreID)!=NULL){
 		generar("Read", nombreID, "");
-	}
-	else{
-		
-	}
 }
 
 void escribirExp(char * expresion){
