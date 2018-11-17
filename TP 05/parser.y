@@ -9,7 +9,6 @@
 void yyerror(const char *);
 extern int yylexerrs;
 int yynerrs;
-struct Dicc * diccionario;
 }
 %defines "parser_bison.h"
 %output "parser.c"
@@ -27,8 +26,8 @@ mini 	: PROG programa FIN
 programa: VAR definiciones COD sentencias 
 		| VAR COD sentencias
 		;
-definiciones: definiciones DEF ID '.' {declararID(&diccionario, $ID);}
-		| DEF ID '.' {declararID(&diccionario, $ID);}
+definiciones: definiciones DEF ID '.' {declararID($ID);}
+		| DEF ID '.' {declararID($ID);}
 		| error '.'
 		;
 sentencias: sentencias sentencia '.'
@@ -36,23 +35,23 @@ sentencias: sentencias sentencia '.'
 		;
 sentencia: LEER'(' identificadores ')'
 		| ESC '(' expresiones ')'
-		| ID ASIG expresion  {asignar(&diccionario, $ID, $expresion); $ID = $expresion;}
+		| ID ASIG expresion  {asignar($ID, $expresion); $ID = $expresion;}
 		| error
 		; 
-identificadores: identificadores ',' ID {leerID(&diccionario, $ID);}
-		| ID {leerID(&diccionario, $ID);}
+identificadores: identificadores ',' ID {leerID($ID);}
+		| ID {leerID($ID);}
 		;
-expresiones: expresiones ',' expresion {escribirExp(&diccionario, $1);}
-		| expresion  {escribirExp(&diccionario, $1);}
+expresiones: expresiones ',' expresion {escribirExp($1);}
+		| expresion  {escribirExp($1);}
 		;
-expresion: expresion '+' expresion {$$ = aplFuncion(&diccionario, "ADD", $1, $3, declararTmp(&diccionario, $$)->lexema);}	
-		| expresion '-' expresion {$$ = aplFuncion(&diccionario, "SUBS", $1, $3, declararTmp(&diccionario, $$)->lexema);}	
-		| expresion '*' expresion {$$ = aplFuncion(&diccionario, "MULT", $1, $3, declararTmp(&diccionario, $$)->lexema);}
-		| expresion '/' expresion {$$ = aplFuncion(&diccionario, "DIV", $1, $3, declararTmp(&diccionario, $$)->lexema);}
+expresion: expresion '+' expresion {$$ = aplFuncion("ADD", $1, $3, declararTmp()->lexema);}	
+		| expresion '-' expresion {$$ = aplFuncion("SUBS", $1, $3, declararTmp()->lexema);}	
+		| expresion '*' expresion {$$ = aplFuncion("MULT", $1, $3, declararTmp()->lexema);}
+		| expresion '/' expresion {$$ = aplFuncion("DIV", $1, $3, declararTmp()->lexema);}
 		| CTE
 		| '(' expresion ')' 
 		| ID
-		| '-' expresion %prec NEG  {$$ = aplFuncion(&diccionario, "INV", $2, "", declararTmp(&diccionario, $$)->lexema);}	
+		| '-' expresion %prec NEG  {$$ = aplFuncion("INV", $2, "", declararTmp()->lexema);}	
 		;
 
 %%

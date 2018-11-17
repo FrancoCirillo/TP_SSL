@@ -4,14 +4,13 @@
 #define DICCIONARIO
 struct Dicc {
 	char lexema[LARGO_ID];
-	char valor[LARGO_VALOR];
 	struct Dicc *sig;
 };
 
-struct Dicc * insertar(struct Dicc **, char*, char*);
-void mostrarLista(struct Dicc *);
-struct Dicc * buscarLexema(struct Dicc **, char[]);
-int estaEnElDic(struct Dicc ** inicio, char nombreID[]);
+extern struct Dicc* diccionario; 
+struct Dicc * insertar(char*);
+struct Dicc * buscarLexema(char[]);
+int estaEnElDic(char nombreID[]);
 
 #endif // DICCIONARIO
 
