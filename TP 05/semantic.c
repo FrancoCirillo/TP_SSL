@@ -9,33 +9,44 @@
 
 int cantTemporales = 1;
 
-void declararID(char nombreID[]){
-	if(buscarLexema(nombreID)!=NULL){
-		yyerror(cargarOracion(buffer, "Error semantico: no se pude volver a declarar ", nombreID));
-		errSeman++;;
+int validarID(char* id){
+	if(buscarLexema(id)!=NULL){
+		yyerror(cargarOracion(buffer, "Error semantico: no se pude volver a declarar ", id));
+		errSeman++;
+		return 0;
 	}
+	return 1;
+}
+
+int verificarID(char* id){
+	if(buscarLexema(id)!=NULL)	return 1;
 	else{
-		printf("Decalre %s, Integer\n", nombreID); //Cambiar Integer por %s
-		insertar(nombreID);
+		yyerror(cargarOracion(buffer, "Error semantico: no se encontro declaracion de ", id));
+		errSeman++;
+		return 0;
 	}
+
+}
+
+void generar(char* funcion, char* ident, char* idObjetivo){
+			printf("%s %s, %s, Integer\n", funcion, idObjetivo, ident);
+}
+
+void declararID(char nombreID[]){
+		generar("Declare", nombreID, "");
+		insertar(nombreID);
 }
 
 void leerID(char nombreID[]){
-	if(buscarLexema(nombreID)!=NULL){
-		printf("Read %s, Integer\n", nombreID);
-	}
-	else{
-		yyerror(cargarOracion(buffer, "Error semantico: no se encontro declaracion de ", nombreID));
-		errSeman++;;
-	}
+		generar("Read", nombreID, "");
 }
 
 void escribirExp(char * expresion){
-		printf("Write %s, Integer\n", expresion);
+	generar("Write", expresion, "");
 }
 
-void asignar(char * id, char * expresion){
-		printf("Store %s,%s\n", expresion,id);
+void asignar(char * id, char * idObjetivo){
+	generar("Store", id, idObjetivo);
 }
 
 struct Dicc * declararTmp(){ 
@@ -50,5 +61,3 @@ char* aplFuncion(char* operador, char* operando1, char* operando2, char* opGuard
 	printf("%s %s,%s,%s\n", operador, operando1, operando2, opGuardado);
 	return opGuardado;
 }
-
-

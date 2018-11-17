@@ -26,8 +26,8 @@ mini 	: PROG programa FIN
 programa: VAR definiciones COD sentencias 
 		| VAR COD sentencias
 		;
-definiciones: definiciones DEF ID '.' {declararID($ID);}
-		| DEF ID '.' {declararID($ID);}
+definiciones: definiciones DEF ID '.' {if(!validarID($1)) YYERROR;declararID($ID);}
+		| DEF ID '.' {if(!validarID($1)) YYERROR;declararID($ID);}
 		| error '.'
 		;
 sentencias: sentencias sentencia '.'
@@ -35,11 +35,11 @@ sentencias: sentencias sentencia '.'
 		;
 sentencia: LEER'(' identificadores ')'
 		| ESC '(' expresiones ')'
-		| ID ASIG expresion  {asignar($ID, $expresion); $ID = $expresion;}
+		| id ASIG expresion  {asignar($id, $expresion); $id= $expresion;}
 		| error
 		; 
-identificadores: identificadores ',' ID {leerID($ID);}
-		| ID {leerID($ID);}
+identificadores: identificadores ',' id {leerID($id);}
+		| id {leerID($id);}
 		;
 expresiones: expresiones ',' expresion {escribirExp($1);}
 		| expresion  {escribirExp($1);}
@@ -50,9 +50,12 @@ expresion: expresion '+' expresion {$$ = aplFuncion("ADD", $1, $3, declararTmp()
 		| expresion '/' expresion {$$ = aplFuncion("DIV", $1, $3, declararTmp()->lexema);}
 		| CTE
 		| '(' expresion ')' 
-		| ID
+		| id
 		| '-' expresion %prec NEG  {$$ = aplFuncion("INV", $2, "", declararTmp()->lexema);}	
 		;
+		
+id		: ID {if(!verificarID($1)) YYERROR;}
 
+		
 %%
 

@@ -16,7 +16,7 @@ struct Dicc * insertar(char *lex) {
 	return diccionario;
 }
 
-struct Dicc * buscarLexema(char lexBuscado[]){
+struct Dicc * buscarLexema(char* lexBuscado){
 	struct Dicc *ptr = diccionario;
     while (ptr!=NULL && strcmp(ptr->lexema, lexBuscado) != 0){
         ptr = ptr->sig;

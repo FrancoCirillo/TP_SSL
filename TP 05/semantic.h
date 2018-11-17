@@ -8,7 +8,9 @@ void escribirExp(char* expresion);
 void asignar(char * id, char * expresion);
 struct Dicc * declararTmp();
 extern int cantTemporales;
-
+int validarID(char* id);
+int verificarID(char* id);
 char* aplFuncion(char* operador, char* operando1, char* operando2, char* opGuardado);
 
+void generar(char* funcion, char* ident, char* idObj);
 #endif // RUTINAS_SEM

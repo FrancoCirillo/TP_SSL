@@ -9,7 +9,7 @@ struct Dicc {
 
 extern struct Dicc* diccionario; 
 struct Dicc * insertar(char*);
-struct Dicc * buscarLexema(char[]);
+struct Dicc * buscarLexema(char*);
 
 #endif // DICCIONARIO
 
