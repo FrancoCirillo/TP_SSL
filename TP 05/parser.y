@@ -21,7 +21,7 @@ int yynerrs;
 
 %%
 todo	: mini { if (yynerrs || yylexerrs || errSeman) {YYABORT;} else {YYACCEPT;}}
-mini 	: PROG {puts("load rtlib");} programa FIN {puts("Stop");}
+mini 	: PROG {empezar();} programa FIN {terminar();}
 		;
 programa: VAR definiciones COD sentencias 
 		| VAR COD sentencias

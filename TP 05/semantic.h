@@ -6,6 +6,8 @@ void asignarValor(char nombreID[], char* valorNuevo);
 void leerID(char nombreID[]);
 void escribirExp(char* expresion);
 void asignar(char * id, char * expresion);
+void empezar();
+void terminar();
 struct Dicc * declararTmp();
 extern int cantTemporales;
 int validarID(char* id);
@@ -14,3 +16,4 @@ char* aplFuncion(char* operador, char* operando1, char* operando2, char* opGuard
 
 void generar(char* funcion, char* ident);
 #endif // RUTINAS_SEM
+

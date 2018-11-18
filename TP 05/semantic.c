@@ -7,8 +7,16 @@
 
 int cantTemporales = 1;
 
+void empezar(){
+	printf("load rtlib\n");
+	}
+
+void terminar(){
+	printf("Stop\n");
+	}
+
 void generar(char* funcion, char* ident){
-			printf("%s %s, Integer\n", funcion, ident);
+	printf("%s %s, Integer\n", funcion, ident);
 }
 
 int validarID(char* nombreID){

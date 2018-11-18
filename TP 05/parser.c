@@ -1259,13 +1259,13 @@ yyreduce:
 
   case 3:
 #line 24 "parser.y" /* yacc.c:1646  */
-    {puts("load rtlib");}
+    {empezar();}
 #line 1264 "parser.c" /* yacc.c:1646  */
     break;
 
   case 4:
 #line 24 "parser.y" /* yacc.c:1646  */
-    {puts("Stop");}
+    {terminar();}
 #line 1270 "parser.c" /* yacc.c:1646  */
     break;
 
