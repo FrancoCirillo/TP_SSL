@@ -40,7 +40,7 @@ int verificarID(char* nombreID){
 
 void declararID(char nombreID[]){
 	generar("Declare", nombreID);
-		insertar(nombreID);
+	insertar(nombreID);
 }
 
 void leerID(char nombreID[]){
@@ -63,7 +63,7 @@ struct Dicc * declararTmp(){
 	return diccionario;
 }
 
-char* aplFuncion(char* operador, char* operando1, char* operando2, char* opGuardado){
+char* aplOperacion(char* operador, char* operando1, char* operando2, char* opGuardado){
 	printf("%s %s,%s,%s\n", operador, operando1, operando2, opGuardado);
 	return opGuardado;
 }

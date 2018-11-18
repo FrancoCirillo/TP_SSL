@@ -44,14 +44,14 @@ identificadores: identificadores ',' id {leerID($id);}
 expresiones: expresiones ',' expresion {escribirExp($1);}
 		| expresion  {escribirExp($1);}
 		;
-expresion: expresion '+' expresion {$$ = aplFuncion("ADD", $1, $3, declararTmp()->lexema);}	
-		| expresion '-' expresion {$$ = aplFuncion("SUBS", $1, $3, declararTmp()->lexema);}	
-		| expresion '*' expresion {$$ = aplFuncion("MULT", $1, $3, declararTmp()->lexema);}
-		| expresion '/' expresion {$$ = aplFuncion("DIV", $1, $3, declararTmp()->lexema);}
+expresion: expresion '+' expresion {$$ = aplOperacion("ADD", $1, $3, declararTmp()->lexema);}	
+		| expresion '-' expresion {$$ = aplOperacion("SUBS", $1, $3, declararTmp()->lexema);}	
+		| expresion '*' expresion {$$ = aplOperacion("MULT", $1, $3, declararTmp()->lexema);}
+		| expresion '/' expresion {$$ = aplOperacion("DIV", $1, $3, declararTmp()->lexema);}
 		| CTE
 		| '(' expresion ')' {$$ = $2;}
 		| id
-		| '-' expresion %prec NEG  {$$ = aplFuncion("INV", $2, "", declararTmp()->lexema);}	
+		| '-' expresion %prec NEG  {$$ = aplOperacion("INV", $2, "", declararTmp()->lexema);}	
 		;
 		
 id		: ID {if(!verificarID($1)) YYERROR;}
