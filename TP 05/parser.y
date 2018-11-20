@@ -27,7 +27,7 @@ programa: VAR definiciones COD sentencias
 		| VAR COD sentencias
 		;
 definiciones: definiciones DEF ID '.' {if(!validarID($ID))YYERROR;declararID($ID);}
-		| DEF ID '.'
+		| DEF ID '.' {declararID($ID);/*No hace falta validar la 1era declaracion*/}
 		| error '.'
 		;
 sentencias: sentencias sentencia '.'
